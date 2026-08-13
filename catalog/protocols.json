@@ -1,0 +1,467 @@
+{
+  "schema_version": "0.1.0",
+  "baseline_date": "2026-08-13",
+  "entries": [
+    {
+      "id": "w3c-trace-context-1",
+      "name": "W3C Trace Context",
+      "domain": "task-context",
+      "type": "standard",
+      "maturity": "standard",
+      "version": "Recommendation (2021)",
+      "status_notes": "Standard HTTP headers and value formats for propagating distributed tracing context.",
+      "evidence": ["trace ID", "parent span", "sampling flag", "vendor trace state"],
+      "relevance": "Provides the most widely applicable starting point for linking one AI task across HTTP service boundaries.",
+      "limitations": "Propagation can stop or be regenerated at provider boundaries; it does not supply disclosure policy or proof of causality.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "W3C Trace Context",
+          "url": "https://www.w3.org/TR/trace-context/"
+        }
+      ]
+    },
+    {
+      "id": "w3c-trace-context-2",
+      "name": "W3C Trace Context Level 2",
+      "domain": "task-context",
+      "type": "standard-draft",
+      "maturity": "candidate",
+      "version": "Candidate Recommendation Draft (2024-03-28)",
+      "status_notes": "Adds trace/span ID generation considerations and a random trace-ID flag.",
+      "evidence": ["trace ID", "parent span", "random trace-ID flag", "sampling flag"],
+      "relevance": "Random-ID signalling and more explicit ID-generation rules may affect safe cross-domain correlation and sampling.",
+      "limitations": "Work in progress and not a final W3C Recommendation.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "W3C Trace Context Level 2",
+          "url": "https://www.w3.org/TR/trace-context-2/"
+        }
+      ]
+    },
+    {
+      "id": "w3c-baggage",
+      "name": "W3C Baggage",
+      "domain": "task-context",
+      "type": "standard-draft",
+      "maturity": "candidate",
+      "version": "Candidate Recommendation Snapshot (2024-05-30)",
+      "status_notes": "Standard representation and propagation of application-defined properties associated with a distributed workflow.",
+      "evidence": ["application-defined workflow properties"],
+      "relevance": "Could carry scoped correlation or policy hints that are not part of trace identity.",
+      "limitations": "High risk of sensitive-data leakage; requires strict allow-listing, size limits, and trust-boundary handling.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "W3C Baggage",
+          "url": "https://www.w3.org/TR/baggage/"
+        }
+      ]
+    },
+    {
+      "id": "otel-semconv-core",
+      "name": "OpenTelemetry Semantic Conventions",
+      "domain": "task-context",
+      "type": "semantic-conventions",
+      "maturity": "standard",
+      "version": "1.44.0",
+      "status_notes": "Common meanings and names for telemetry attributes, spans, metrics, events, logs, and resources.",
+      "evidence": ["spans", "metrics", "events", "logs", "resources"],
+      "relevance": "A shared vocabulary is necessary to combine evidence produced by different implementations.",
+      "limitations": "Semantic compatibility does not guarantee context propagation, authorisation, retention, or topology mapping.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "OpenTelemetry Semantic Conventions",
+          "url": "https://opentelemetry.io/docs/specs/semconv/"
+        },
+        {
+          "title": "OpenTelemetry Semantic Conventions releases",
+          "url": "https://github.com/open-telemetry/semantic-conventions/releases"
+        }
+      ]
+    },
+    {
+      "id": "otel-semconv-genai",
+      "name": "OpenTelemetry GenAI Semantic Conventions",
+      "domain": "inference",
+      "type": "semantic-conventions",
+      "maturity": "experimental",
+      "version": "Unreleased separate repository",
+      "status_notes": "Moved out of the core semantic-conventions repository in 2026; no release was present at the baseline check.",
+      "evidence": ["GenAI client spans", "model metrics", "events", "tool calls", "MCP operations", "provider-specific attributes"],
+      "relevance": "The most directly relevant emerging vocabulary for correlating agent, model, tool, and provider activity.",
+      "limitations": "Fast-moving, unversioned at baseline, and not yet a stable cross-provider contract.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "OpenTelemetry GenAI Semantic Conventions repository",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai"
+        },
+        {
+          "title": "OpenTelemetry GenAI Semantic Conventions releases",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/releases"
+        }
+      ]
+    },
+    {
+      "id": "openmetrics-1",
+      "name": "OpenMetrics 1.0",
+      "domain": "metrics",
+      "type": "wire-format",
+      "maturity": "standard",
+      "version": "1.0",
+      "status_notes": "Stable metric exposition format with broad Prometheus ecosystem adoption.",
+      "evidence": ["counters", "gauges", "histograms", "metric metadata", "exemplars"],
+      "relevance": "A common metric format can carry inference, compute, and network health evidence between collection systems.",
+      "limitations": "Aggregated time series often cannot explain the critical path of one transaction.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "OpenMetrics 1.0 specification",
+          "url": "https://prometheus.io/docs/specs/om/open_metrics_spec/"
+        }
+      ]
+    },
+    {
+      "id": "openmetrics-2",
+      "name": "OpenMetrics 2.0",
+      "domain": "metrics",
+      "type": "wire-format",
+      "maturity": "experimental",
+      "version": "Release candidate / experimental",
+      "status_notes": "Second-generation OpenMetrics work with improved alignment to the OpenTelemetry data model and naming conventions.",
+      "evidence": ["metrics", "metadata", "modern Prometheus data types"],
+      "relevance": "Potentially improves interoperability between inference metrics, Prometheus systems, and OpenTelemetry.",
+      "limitations": "Experimental at baseline; compatibility and production adoption are not established.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "OpenMetrics 2.0 experimental specification",
+          "url": "https://prometheus.io/docs/specs/om/open_metrics_spec_2_0/"
+        }
+      ]
+    },
+    {
+      "id": "vllm-observability",
+      "name": "vLLM metrics, tracing, and per-request metrics",
+      "domain": "inference",
+      "type": "implementation",
+      "maturity": "implementation",
+      "version": "Rolling stable/latest documentation",
+      "status_notes": "Exposes Prometheus metrics, OpenTelemetry tracing, and optional per-request timing metrics.",
+      "evidence": ["queue time", "time to first token", "generation time", "inter-token latency", "token rate", "model forward time", "model execute time"],
+      "relevance": "Separates several inference-side delays that otherwise appear as one network-visible request time.",
+      "limitations": "Signals and overhead depend on configuration; implementation support does not create a provider-neutral exchange contract.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "vLLM metrics and OpenTelemetry tracing",
+          "url": "https://docs.vllm.ai/en/stable/design/metrics/"
+        },
+        {
+          "title": "vLLM per-request metrics",
+          "url": "https://docs.vllm.ai/en/latest/features/per_request_metrics/"
+        }
+      ]
+    },
+    {
+      "id": "triton-observability",
+      "name": "NVIDIA Triton metrics and tracing",
+      "domain": "inference",
+      "type": "implementation",
+      "maturity": "implementation",
+      "version": "Rolling product documentation",
+      "status_notes": "Provides Prometheus request/GPU/cache metrics and per-request tracing using Triton or OpenTelemetry modes.",
+      "evidence": ["request counts", "request durations", "GPU metrics", "cache metrics", "per-request trace timestamps"],
+      "relevance": "Provides inference and accelerator evidence that can be correlated with task and network observations.",
+      "limitations": "Telemetry configuration, naming, sampling, retention, and visibility are deployment-specific.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "Triton metrics",
+          "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/metrics.html"
+        },
+        {
+          "title": "Triton server trace",
+          "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/trace.html"
+        }
+      ]
+    },
+    {
+      "id": "openconfig-gnmi",
+      "name": "OpenConfig gNMI",
+      "domain": "device-telemetry",
+      "type": "protocol",
+      "maturity": "standard",
+      "version": "0.11.0 in revision history; document header states 0.10.0",
+      "status_notes": "The March 2026 revision history adds v0.11.0, while the visible specification header still reports v0.10.0 and 0.10.x compatibility.",
+      "evidence": ["operational state", "configuration state", "streaming telemetry", "timestamps", "model capabilities"],
+      "relevance": "Supplies detailed device and interface evidence needed to separate path/device degradation from compute delay.",
+      "limitations": "Local device paths and counters need topology and transaction mapping; the baseline source has an internal version inconsistency.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "OpenConfig gNMI specification",
+          "url": "https://github.com/openconfig/reference/blob/master/rpc/gnmi/gnmi-specification.md"
+        }
+      ]
+    },
+    {
+      "id": "yang-push",
+      "name": "YANG-Push",
+      "domain": "device-telemetry",
+      "type": "protocol",
+      "maturity": "standard",
+      "version": "RFC 8639, RFC 8640, RFC 8641",
+      "status_notes": "Subscription and push mechanisms for YANG datastore updates, including on-change notifications.",
+      "evidence": ["periodic YANG data", "on-change YANG data", "subscription state"],
+      "relevance": "Can publish modelled network and on-path telemetry without continuous polling.",
+      "limitations": "Data models, access control, topology mapping, and cross-domain correlation remain separate concerns.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "RFC 8641: Subscription to YANG Notifications for Datastore Updates",
+          "url": "https://datatracker.ietf.org/doc/rfc8641/"
+        }
+      ]
+    },
+    {
+      "id": "ipfix",
+      "name": "IP Flow Information Export (IPFIX)",
+      "domain": "flow-routing",
+      "type": "protocol",
+      "maturity": "standard",
+      "version": "RFC 7011 / STD 77",
+      "status_notes": "Standards-track protocol for exporting traffic-flow information from exporters to collectors.",
+      "evidence": ["flow identity", "volume", "timing", "endpoints", "exporter-defined information elements"],
+      "relevance": "Shows who communicated, when, and at what scale across network boundaries.",
+      "limitations": "Sampling and aggregation can obscure short incidents; flow identity does not establish application causality.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "RFC 7011: IPFIX Protocol",
+          "url": "https://datatracker.ietf.org/doc/rfc7011/"
+        }
+      ]
+    },
+    {
+      "id": "bmp",
+      "name": "BGP Monitoring Protocol (BMP)",
+      "domain": "flow-routing",
+      "type": "protocol",
+      "maturity": "standard",
+      "version": "RFC 7854 with active extension work",
+      "status_notes": "Provides route views and BGP session monitoring; active work includes BMP v4/TLV and routing-event extensions.",
+      "evidence": ["route views", "BGP updates", "peer/session state", "policy stages through extensions"],
+      "relevance": "Can place routing changes on the same timeline as application and inference degradation.",
+      "limitations": "Temporal coincidence is not causal proof; visibility depends on where BMP is collected.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "RFC 7854: BGP Monitoring Protocol",
+          "url": "https://datatracker.ietf.org/doc/rfc7854/"
+        },
+        {
+          "title": "IETF active Internet-Drafts",
+          "url": "https://datatracker.ietf.org/doc/active/"
+        }
+      ]
+    },
+    {
+      "id": "stamp",
+      "name": "STAMP and TWAMP",
+      "domain": "path-measurement",
+      "type": "protocol",
+      "maturity": "standard",
+      "version": "RFC 8762 / RFC 5357 families",
+      "status_notes": "Active measurement protocols for one-way and round-trip performance metrics.",
+      "evidence": ["delay", "delay variation", "packet loss", "round-trip performance"],
+      "relevance": "Provides controlled path-performance evidence independent of application and inference instrumentation.",
+      "limitations": "Probe paths and treatment may differ from the transaction; one-way interpretation depends on time quality.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "RFC 8762: Simple Two-Way Active Measurement Protocol",
+          "url": "https://datatracker.ietf.org/doc/rfc8762/"
+        }
+      ]
+    },
+    {
+      "id": "ioam",
+      "name": "In Situ OAM (IOAM)",
+      "domain": "path-measurement",
+      "type": "protocol-family",
+      "maturity": "standard",
+      "version": "RFC 9197 family",
+      "status_notes": "Defines on-path operational and telemetry data fields for use inside limited IOAM domains, with direct-export and encapsulation extensions.",
+      "evidence": ["per-hop trace data", "proof-of-transit fields", "edge-to-edge data", "direct export"],
+      "relevance": "Can produce fine-grained path evidence that complements active probes and device counters.",
+      "limitations": "Limited-domain model, deployment overhead, integrity, privacy, and cross-domain disclosure constraints.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "RFC 9197: IOAM Data Fields",
+          "url": "https://datatracker.ietf.org/doc/rfc9197/"
+        },
+        {
+          "title": "RFC 9326: IOAM Direct Exporting",
+          "url": "https://datatracker.ietf.org/doc/rfc9326/"
+        }
+      ]
+    },
+    {
+      "id": "network-telemetry-framework",
+      "name": "IETF Network Telemetry Framework",
+      "domain": "path-measurement",
+      "type": "framework",
+      "maturity": "framework",
+      "version": "RFC 9232",
+      "status_notes": "Taxonomy and framework covering telemetry acquisition, export, analysis, and techniques including active, passive, and hybrid measurement.",
+      "evidence": ["telemetry taxonomy", "method classification", "architectural relationships"],
+      "relevance": "Provides a standards-based map for the network portion of the observability landscape.",
+      "limitations": "Does not define a cross-domain task-correlation or disclosure protocol.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "RFC 9232: Network Telemetry Framework",
+          "url": "https://datatracker.ietf.org/doc/rfc9232/"
+        }
+      ]
+    },
+    {
+      "id": "on-path-telemetry-yang",
+      "name": "On-Path Telemetry YANG Data Model",
+      "domain": "path-measurement",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-ietf-ippm-on-path-telemetry-yang-05",
+      "status_notes": "IETF working-group draft published 2026-07-29 for Alternate Marking and IOAM data via YANG notifications/YANG-Push.",
+      "evidence": ["loss", "delay", "jitter", "IOAM data", "Alternate Marking data"],
+      "relevance": "Could make on-path evidence available through model-driven telemetry and subscriptions.",
+      "limitations": "Work in progress; scope is specific to Alternate Marking and IOAM.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "On-Path Telemetry YANG Data Model",
+          "url": "https://datatracker.ietf.org/doc/draft-ietf-ippm-on-path-telemetry-yang/"
+        }
+      ]
+    },
+    {
+      "id": "cats-framework",
+      "name": "Computing-Aware Traffic Steering (CATS) Framework",
+      "domain": "compute-network",
+      "type": "internet-draft",
+      "maturity": "candidate",
+      "version": "draft-ietf-cats-framework-24; RFC Editor Queue",
+      "status_notes": "IETF framework for combining network and computing-resource information when selecting a service instance; baseline framework covers one service provider.",
+      "evidence": ["network status", "compute status", "service-instance selection inputs"],
+      "relevance": "Directly overlaps the talk's hypothesis that live network and compute signals may influence inference placement.",
+      "limitations": "Framework scope and single-provider assumption do not solve multi-provider observability or federation.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "A Framework for Computing-Aware Traffic Steering",
+          "url": "https://datatracker.ietf.org/doc/draft-ietf-cats-framework/"
+        }
+      ]
+    },
+    {
+      "id": "cats-oam-framework",
+      "name": "CATS OAM Framework",
+      "domain": "compute-network",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-ietf-cats-oam-fw-01",
+      "status_notes": "IETF working-group draft dated 2026-07-21 covering fault management and performance monitoring across clients, network paths, and service instances.",
+      "evidence": ["client OAM", "network path OAM", "service OAM", "instance OAM", "fault and performance state"],
+      "relevance": "One of the closest current standards efforts to joint network-and-compute causal evidence.",
+      "limitations": "Early work in progress; data models, cross-domain trust, and implementation experience remain open.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "CATS OAM Framework",
+          "url": "https://datatracker.ietf.org/doc/draft-ietf-cats-oam-fw/"
+        }
+      ]
+    },
+    {
+      "id": "cats-oam-usecases",
+      "name": "CATS OAM Use Cases and Requirements",
+      "domain": "compute-network",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-dikshit-cats-oam-usecases-00",
+      "status_notes": "Individual Internet-Draft dated 2026-07-31; it has no formal IETF standing at baseline.",
+      "evidence": ["multi-domain failure detection", "SLA verification", "metric-driven steering use cases"],
+      "relevance": "Provides operator-oriented scenarios against which FOX and other cross-domain models can be tested.",
+      "limitations": "Individual draft, not IETF consensus; must be treated as a discovery source and working proposal.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "CATS OAM Use Cases and Requirements",
+          "url": "https://datatracker.ietf.org/doc/draft-dikshit-cats-oam-usecases/"
+        }
+      ]
+    },
+    {
+      "id": "quality-of-outcome",
+      "name": "Quality of Outcome (QoO)",
+      "domain": "compute-network",
+      "type": "internet-draft",
+      "maturity": "candidate",
+      "version": "draft-ietf-ippm-qoo-11",
+      "status_notes": "IETF working-group document in advanced processing at baseline; defines application-specific network quality assessment and outcome scores.",
+      "evidence": ["application performance requirements", "network quality distributions", "outcome score"],
+      "relevance": "May help translate network measurements into an application-facing signal suitable for placement or troubleshooting.",
+      "limitations": "A quality score does not identify the causal component and may hide distribution or measurement assumptions.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "Quality of Outcome",
+          "url": "https://datatracker.ietf.org/doc/draft-ietf-ippm-qoo/"
+        }
+      ]
+    },
+    {
+      "id": "distributed-inference-transport",
+      "name": "Transport Considerations for Large-Scale Distributed Inference Networks",
+      "domain": "compute-network",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-li-tsvwg-inference-transport-00",
+      "status_notes": "Individual Internet-Draft dated 2026-07-04; it has no formal IETF standing at baseline.",
+      "evidence": ["KV-cache transfer traffic", "expert-parallel traffic", "path load", "transport behaviour"],
+      "relevance": "Directly addresses traffic generated by disaggregated and expert-parallel inference and may produce new measurement requirements.",
+      "limitations": "Early individual proposal focused largely on large-scale inference networks; it must not be presented as consensus or general WAN evidence.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "Transport Considerations for Large-Scale Distributed Inference Networks",
+          "url": "https://datatracker.ietf.org/doc/draft-li-tsvwg-inference-transport/"
+        }
+      ]
+    },
+    {
+      "id": "fox",
+      "name": "Federated Observability Exchange (FOX)",
+      "domain": "project-concept",
+      "type": "working-concept",
+      "maturity": "working-hypothesis",
+      "version": "0.1 concept",
+      "status_notes": "Project hypothesis for neutral, policy-controlled exchange of selected cross-domain evidence.",
+      "evidence": ["authorised evidence envelopes", "schema discovery", "policy", "subscriptions", "correlation", "audit"],
+      "relevance": "Explores whether neutral interconnection can address the coordination gap left by domain-local observability tools.",
+      "limitations": "No protocol, implementation, deployment, or independent validation exists at baseline.",
+      "last_checked": "2026-08-13",
+      "primary_sources": [
+        {
+          "title": "FOX working concept",
+          "url": "../docs/fox.md"
+        }
+      ]
+    }
+  ]
+}

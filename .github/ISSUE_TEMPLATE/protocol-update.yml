@@ -1,0 +1,57 @@
+name: Protocol or system update
+description: Suggest a source-backed addition, correction, or status change.
+title: "Update: "
+body:
+  - type: input
+    id: item
+    attributes:
+      label: Protocol or system
+      description: Use the catalogue name or propose a concise new name.
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Authoritative source
+      description: Link to the standards body, official specification/release, implementation documentation, or primary research.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: maturity
+    attributes:
+      label: Proposed maturity
+      options:
+        - standard
+        - candidate
+        - draft
+        - experimental
+        - implementation
+        - framework
+        - working-hypothesis
+        - deprecated
+    validations:
+      required: true
+
+  - type: textarea
+    id: change
+    attributes:
+      label: What changed?
+      description: Include version/revision, date, previous state, and new state.
+    validations:
+      required: true
+
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Relevance to distributed AI observability
+      description: Explain the cross-domain task, inference, network, interconnection, policy, security, or resilience consequence.
+    validations:
+      required: true
+
+  - type: textarea
+    id: caveats
+    attributes:
+      label: Caveats or conflicting evidence
+      description: Note adoption limits, implementation scope, privacy/security concerns, or disagreement between primary sources.
