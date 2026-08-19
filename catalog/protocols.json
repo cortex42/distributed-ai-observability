@@ -106,6 +106,33 @@
       ]
     },
     {
+      "id": "mcp-trace-context",
+      "name": "Model Context Protocol trace context propagation",
+      "domain": "task-context",
+      "type": "protocol-feature",
+      "maturity": "candidate",
+      "version": "2026-07-28 specification release candidate; SEP-414 Final",
+      "status_notes": "The MCP release candidate documents W3C trace context and baggage in JSON-RPC `_meta`. SEP-414 is Final in the MCP process, and official SDK documentation describes shipping propagation and span instrumentation.",
+      "evidence": ["traceparent", "tracestate", "baggage", "MCP method", "protocol version", "tool and prompt names"],
+      "relevance": "Provides a protocol-defined carrier for following agent-to-tool requests across MCP clients, servers, and gateways, directly reducing a documented task-correlation gap.",
+      "limitations": "The 2026-07-28 specification is a release candidate, not an IETF or W3C standard; SEP-414 documents conventions rather than requiring every implementation to emit or propagate them, SDK coverage varies, and correlation metadata still needs trust-boundary and data-minimisation policy.",
+      "last_checked": "2026-08-17",
+      "primary_sources": [
+        {
+          "title": "MCP 2026-07-28 specification changelog",
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/changelog"
+        },
+        {
+          "title": "MCP SEP-414 trace context propagation conventions",
+          "url": "https://modelcontextprotocol.io/seps/414-request-meta"
+        },
+        {
+          "title": "MCP Python SDK OpenTelemetry documentation",
+          "url": "https://github.com/modelcontextprotocol/python-sdk/blob/main/docs/run/opentelemetry.md"
+        }
+      ]
+    },
+    {
       "id": "openmetrics-1",
       "name": "OpenMetrics 1.0",
       "domain": "metrics",
@@ -441,6 +468,25 @@
         {
           "title": "Transport Considerations for Large-Scale Distributed Inference Networks",
           "url": "https://datatracker.ietf.org/doc/draft-li-tsvwg-inference-transport/"
+        }
+      ]
+    },
+    {
+      "id": "agent-tool-proxy-modes",
+      "name": "Proxy Modes for Agent-Tool Protocols",
+      "domain": "task-context",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-gaikwad-agent-proxy-modes-00",
+      "status_notes": "Individual Internet-Draft published 2026-08-13 with no formal IETF standing. It proposes W3C trace propagation, append-only hop metadata, and intermediary metrics for agent-tool protocol proxies.",
+      "evidence": ["W3C trace context", "intermediary hop sequence", "request counts", "latency percentiles", "circuit-breaker transitions", "cache and connection metrics"],
+      "relevance": "Directly addresses observability across agent-tool intermediaries and makes routing, retry, partial-failure, and gateway-hop behaviour more visible.",
+      "limitations": "Early individual proposal with no IETF consensus or demonstrated interoperable implementation; its hop metadata may expose topology and requires integrity, privacy, and bounded-disclosure controls.",
+      "last_checked": "2026-08-17",
+      "primary_sources": [
+        {
+          "title": "Proxy Modes for Agent-Tool Protocols",
+          "url": "https://datatracker.ietf.org/doc/draft-gaikwad-agent-proxy-modes/"
         }
       ]
     },

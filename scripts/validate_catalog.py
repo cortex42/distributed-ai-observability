@@ -48,6 +48,7 @@ PRIMARY_HOSTS = {
     "docs.vllm.ai",
     "docs.nvidia.com",
     "datatracker.ietf.org",
+    "modelcontextprotocol.io",
 }
 
 

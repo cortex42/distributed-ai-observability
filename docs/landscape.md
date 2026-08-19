@@ -43,6 +43,7 @@ Each participant normally sees a useful but incomplete slice. A route change and
 | [W3C Baggage](https://www.w3.org/TR/baggage/) | Candidate Recommendation Snapshot, 2024 | Propagates application-defined properties associated with a workflow | baggage can expose sensitive data and requires strict allow-listing |
 | [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/) | v1.44.0 | Common names and meanings for spans, metrics, events, logs, and resources | common vocabulary does not itself authorise exchange or guarantee end-to-end propagation |
 | [OpenTelemetry GenAI Semantic Conventions](https://github.com/open-telemetry/semantic-conventions-genai) | Separate pre-release repository; no release at baseline | GenAI client, model, tool, MCP, metrics, event, and provider-specific conventions | fast-moving and not yet a released, stable cross-provider contract |
+| [Model Context Protocol trace propagation](https://modelcontextprotocol.io/seps/414-request-meta) | 2026-07-28 specification release candidate; SEP-414 Final in the MCP process | Carries W3C `traceparent`, `tracestate`, and `baggage` in JSON-RPC `_meta`; official SDK documentation describes request spans and propagation | the specification is a release candidate rather than an IETF or W3C standard; propagation and SDK coverage vary, and metadata crossing trust boundaries needs strict policy |
 
 ### Inference and metric evidence
 
@@ -78,10 +79,13 @@ The following work is not proof that distributed AI observability will develop i
 | [CATS OAM use cases](https://datatracker.ietf.org/doc/draft-dikshit-cats-oam-usecases/) | Individual draft `-00`, July 2026 | grounds CATS OAM in use cases including multi-domain failure detection and metric-driven steering |
 | [Quality of Outcome](https://datatracker.ietf.org/doc/draft-ietf-ippm-qoo/) | IETF draft `-11`, May 2026 | attempts to express application-specific network performance outcomes in a form useful to applications, users, and operators |
 | [Transport Considerations for Large-Scale Distributed Inference Networks](https://datatracker.ietf.org/doc/draft-li-tsvwg-inference-transport/) | Individual draft `-00`, July 2026; no formal IETF standing | describes distributed-inference traffic such as prefill/decode KV-cache transfer and expert-parallel flows; it should be tracked, not treated as consensus |
+| [Proxy Modes for Agent-Tool Protocols](https://datatracker.ietf.org/doc/draft-gaikwad-agent-proxy-modes/) | Individual draft `-00`, 13 August 2026; no formal IETF standing | proposes W3C trace propagation, append-only gateway-hop metadata, and intermediary metrics for MCP-like traffic, while also defining retry and partial-failure behaviour |
 
 ## 5. What is missing
 
 No single protocol currently supplies the minimum ingredients needed for a defensible cross-domain causal timeline:
+
+MCP SEP-414 is a concrete improvement for the application side of that timeline: it standardises the carrier keys needed to continue a trace through agent-to-tool calls, and official SDK work makes the signal deployable. It does not connect those spans to network paths, inference queues, provider evidence, time-quality metadata, or cross-domain disclosure policy.
 
 1. **Shared but privacy-safe correlation identifiers.** A task, span, flow, route event, measurement, and inference request need a controlled way to refer to the same transaction.
 2. **Time quality and uncertainty.** Timestamps from multiple clocks require known synchronisation quality and uncertainty bounds.

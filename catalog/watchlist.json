@@ -45,6 +45,27 @@
       "check_for": ["first release", "versioned release", "stability declaration"]
     },
     {
+      "id": "mcp-specification-changelog",
+      "organisation": "Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/changelog",
+      "tracks": ["mcp-trace-context"],
+      "check_for": ["release-candidate transition", "trace context semantic change", "incompatible protocol change", "deprecation"]
+    },
+    {
+      "id": "mcp-sep-414",
+      "organisation": "Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/seps/414-request-meta",
+      "tracks": ["mcp-trace-context"],
+      "check_for": ["current-specification change", "trace key change", "security guidance", "implementation status"]
+    },
+    {
+      "id": "mcp-python-sdk-opentelemetry",
+      "organisation": "Model Context Protocol",
+      "url": "https://github.com/modelcontextprotocol/python-sdk/blob/main/docs/run/opentelemetry.md",
+      "tracks": ["mcp-trace-context"],
+      "check_for": ["tagged release support", "span semantic change", "propagation change", "stability or compatibility warning"]
+    },
+    {
       "id": "prometheus-openmetrics",
       "organisation": "Prometheus",
       "url": "https://prometheus.io/docs/specs/om/open_metrics_spec_2_0/",
@@ -176,6 +197,13 @@
       "url": "https://datatracker.ietf.org/doc/draft-li-tsvwg-inference-transport/",
       "tracks": ["distributed-inference-transport"],
       "check_for": ["revision", "working-group adoption", "new measurement requirement", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-agent-tool-proxy-modes",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-gaikwad-agent-proxy-modes/",
+      "tracks": ["agent-tool-proxy-modes", "mcp-trace-context"],
+      "check_for": ["revision", "working-group adoption", "trace or hop semantic change", "security or privacy change", "expiry or replacement"]
     }
   ]
 }
