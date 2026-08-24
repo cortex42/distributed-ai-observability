@@ -6,204 +6,433 @@
       "id": "w3c-trace-context",
       "organisation": "W3C",
       "url": "https://www.w3.org/TR/trace-context/",
-      "tracks": ["w3c-trace-context-1"],
-      "check_for": ["new Recommendation", "superseding specification", "errata or normative status change"]
+      "tracks": [
+        "w3c-trace-context-1"
+      ],
+      "check_for": [
+        "new Recommendation",
+        "superseding specification",
+        "errata or normative status change"
+      ]
     },
     {
       "id": "w3c-trace-context-2",
       "organisation": "W3C",
       "url": "https://www.w3.org/TR/trace-context-2/",
-      "tracks": ["w3c-trace-context-2"],
-      "check_for": ["revision", "Candidate Recommendation transition", "Recommendation transition", "implementation report"]
+      "tracks": [
+        "w3c-trace-context-2"
+      ],
+      "check_for": [
+        "revision",
+        "Candidate Recommendation transition",
+        "Recommendation transition",
+        "implementation report"
+      ]
     },
     {
       "id": "w3c-baggage",
       "organisation": "W3C",
       "url": "https://www.w3.org/TR/baggage/",
-      "tracks": ["w3c-baggage"],
-      "check_for": ["revision", "Recommendation transition", "privacy or security changes"]
+      "tracks": [
+        "w3c-baggage"
+      ],
+      "check_for": [
+        "revision",
+        "Recommendation transition",
+        "privacy or security changes"
+      ]
     },
     {
       "id": "otel-semconv-releases",
       "organisation": "OpenTelemetry",
       "url": "https://github.com/open-telemetry/semantic-conventions/releases",
-      "tracks": ["otel-semconv-core"],
-      "check_for": ["new release", "stability change", "breaking semantic change", "new correlation mechanism"]
+      "tracks": [
+        "otel-semconv-core"
+      ],
+      "check_for": [
+        "new release",
+        "stability change",
+        "breaking semantic change",
+        "new correlation mechanism"
+      ]
     },
     {
       "id": "otel-genai-repository",
       "organisation": "OpenTelemetry",
       "url": "https://github.com/open-telemetry/semantic-conventions-genai",
-      "tracks": ["otel-semconv-genai"],
-      "check_for": ["schema URL", "GenAI span or metric changes", "MCP conventions", "reference implementation changes"]
+      "tracks": [
+        "otel-semconv-genai"
+      ],
+      "check_for": [
+        "schema URL",
+        "GenAI span or metric changes",
+        "MCP conventions",
+        "reference implementation changes"
+      ]
     },
     {
       "id": "otel-genai-releases",
       "organisation": "OpenTelemetry",
       "url": "https://github.com/open-telemetry/semantic-conventions-genai/releases",
-      "tracks": ["otel-semconv-genai"],
-      "check_for": ["first release", "versioned release", "stability declaration"]
+      "tracks": [
+        "otel-semconv-genai"
+      ],
+      "check_for": [
+        "first release",
+        "versioned release",
+        "stability declaration"
+      ]
     },
     {
       "id": "mcp-specification-changelog",
       "organisation": "Model Context Protocol",
       "url": "https://modelcontextprotocol.io/specification/2026-07-28/changelog",
-      "tracks": ["mcp-trace-context"],
-      "check_for": ["release-candidate transition", "trace context semantic change", "incompatible protocol change", "deprecation"]
+      "tracks": [
+        "mcp-trace-context"
+      ],
+      "check_for": [
+        "release-candidate transition",
+        "trace context semantic change",
+        "incompatible protocol change",
+        "deprecation"
+      ]
     },
     {
       "id": "mcp-sep-414",
       "organisation": "Model Context Protocol",
       "url": "https://modelcontextprotocol.io/seps/414-request-meta",
-      "tracks": ["mcp-trace-context"],
-      "check_for": ["current-specification change", "trace key change", "security guidance", "implementation status"]
+      "tracks": [
+        "mcp-trace-context"
+      ],
+      "check_for": [
+        "current-specification change",
+        "trace key change",
+        "security guidance",
+        "implementation status"
+      ]
     },
     {
       "id": "mcp-python-sdk-opentelemetry",
       "organisation": "Model Context Protocol",
       "url": "https://github.com/modelcontextprotocol/python-sdk/blob/main/docs/run/opentelemetry.md",
-      "tracks": ["mcp-trace-context"],
-      "check_for": ["tagged release support", "span semantic change", "propagation change", "stability or compatibility warning"]
+      "tracks": [
+        "mcp-trace-context"
+      ],
+      "check_for": [
+        "tagged release support",
+        "span semantic change",
+        "propagation change",
+        "stability or compatibility warning"
+      ]
     },
     {
       "id": "prometheus-openmetrics",
       "organisation": "Prometheus",
       "url": "https://prometheus.io/docs/specs/om/open_metrics_spec_2_0/",
-      "tracks": ["openmetrics-1", "openmetrics-2"],
-      "check_for": ["release-candidate change", "stable 2.0 release", "OpenTelemetry interoperability change"]
+      "tracks": [
+        "openmetrics-1",
+        "openmetrics-2"
+      ],
+      "check_for": [
+        "release-candidate change",
+        "stable 2.0 release",
+        "OpenTelemetry interoperability change"
+      ]
     },
     {
       "id": "vllm-metrics",
       "organisation": "vLLM",
       "url": "https://docs.vllm.ai/en/stable/design/metrics/",
-      "tracks": ["vllm-observability"],
-      "check_for": ["metric additions or removals", "OpenTelemetry tracing changes", "queue, cache, prefill, decode, or per-request semantics"]
+      "tracks": [
+        "vllm-observability"
+      ],
+      "check_for": [
+        "metric additions or removals",
+        "OpenTelemetry tracing changes",
+        "queue, cache, prefill, decode, or per-request semantics"
+      ]
     },
     {
       "id": "vllm-per-request-metrics",
       "organisation": "vLLM",
       "url": "https://docs.vllm.ai/en/latest/features/per_request_metrics/",
-      "tracks": ["vllm-observability"],
-      "check_for": ["stability change", "field semantics", "overhead guidance", "API compatibility"]
+      "tracks": [
+        "vllm-observability"
+      ],
+      "check_for": [
+        "stability change",
+        "field semantics",
+        "overhead guidance",
+        "API compatibility"
+      ]
     },
     {
       "id": "triton-metrics",
       "organisation": "NVIDIA",
       "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/metrics.html",
-      "tracks": ["triton-observability"],
-      "check_for": ["new inference, queue, cache, GPU, or request metrics", "metric deprecation"]
+      "tracks": [
+        "triton-observability"
+      ],
+      "check_for": [
+        "new inference, queue, cache, GPU, or request metrics",
+        "metric deprecation"
+      ]
     },
     {
       "id": "triton-tracing",
       "organisation": "NVIDIA",
       "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/trace.html",
-      "tracks": ["triton-observability"],
-      "check_for": ["OpenTelemetry mode changes", "new trace timestamps", "propagation or export changes"]
+      "tracks": [
+        "triton-observability"
+      ],
+      "check_for": [
+        "OpenTelemetry mode changes",
+        "new trace timestamps",
+        "propagation or export changes"
+      ]
     },
     {
       "id": "openconfig-gnmi",
       "organisation": "OpenConfig",
       "url": "https://github.com/openconfig/reference/blob/master/rpc/gnmi/gnmi-specification.md",
-      "tracks": ["openconfig-gnmi"],
-      "check_for": ["new revision-history entry", "header-version correction", "timestamp or subscription semantic change"]
+      "tracks": [
+        "openconfig-gnmi"
+      ],
+      "check_for": [
+        "new revision-history entry",
+        "header-version correction",
+        "timestamp or subscription semantic change"
+      ]
     },
     {
       "id": "ietf-active-drafts",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/active/",
-      "tracks": ["bmp", "on-path-telemetry-yang", "cats-framework", "cats-oam-framework", "cats-oam-usecases", "quality-of-outcome", "distributed-inference-transport"],
-      "check_for": ["new revisions", "replacement or expiry", "working-group adoption", "IESG or RFC transition", "new AI inference observability work"]
+      "tracks": [
+        "bmp",
+        "on-path-telemetry-yang",
+        "cats-framework",
+        "cats-oam-framework",
+        "cats-oam-usecases",
+        "quality-of-outcome",
+        "distributed-inference-transport"
+      ],
+      "check_for": [
+        "new revisions",
+        "replacement or expiry",
+        "working-group adoption",
+        "IESG or RFC transition",
+        "new AI inference observability work"
+      ]
     },
     {
       "id": "ietf-network-telemetry-framework",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/rfc9232/",
-      "tracks": ["network-telemetry-framework", "stamp", "ioam"],
-      "check_for": ["updates or obsoleting RFCs", "new referenced telemetry methods"]
+      "tracks": [
+        "network-telemetry-framework",
+        "stamp",
+        "ioam"
+      ],
+      "check_for": [
+        "updates or obsoleting RFCs",
+        "new referenced telemetry methods"
+      ]
     },
     {
       "id": "ietf-ipfix",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/rfc7011/",
-      "tracks": ["ipfix"],
-      "check_for": ["updates or obsoleting RFCs", "new information-model or export extensions relevant to correlation"]
+      "tracks": [
+        "ipfix"
+      ],
+      "check_for": [
+        "updates or obsoleting RFCs",
+        "new information-model or export extensions relevant to correlation"
+      ]
     },
     {
       "id": "ietf-bmp",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/rfc7854/",
-      "tracks": ["bmp"],
-      "check_for": ["updates or obsoleting RFCs", "BMP v4 or event extensions", "security or timestamp changes"]
+      "tracks": [
+        "bmp"
+      ],
+      "check_for": [
+        "updates or obsoleting RFCs",
+        "BMP v4 or event extensions",
+        "security or timestamp changes"
+      ]
     },
     {
       "id": "ietf-stamp",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/rfc8762/",
-      "tracks": ["stamp"],
-      "check_for": ["updates or obsoleting RFCs", "new measurement or YANG extensions", "security or timing changes"]
+      "tracks": [
+        "stamp"
+      ],
+      "check_for": [
+        "updates or obsoleting RFCs",
+        "new measurement or YANG extensions",
+        "security or timing changes"
+      ]
     },
     {
       "id": "ietf-ioam",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/rfc9197/",
-      "tracks": ["ioam"],
-      "check_for": ["updates or obsoleting RFCs", "new data fields", "integrity, export, deployment, or encapsulation extensions"]
+      "tracks": [
+        "ioam"
+      ],
+      "check_for": [
+        "updates or obsoleting RFCs",
+        "new data fields",
+        "integrity, export, deployment, or encapsulation extensions"
+      ]
     },
     {
       "id": "ietf-yang-push",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/rfc8641/",
-      "tracks": ["yang-push"],
-      "check_for": ["updates or obsoleting RFCs", "subscription or on-change semantic changes"]
+      "tracks": [
+        "yang-push"
+      ],
+      "check_for": [
+        "updates or obsoleting RFCs",
+        "subscription or on-change semantic changes"
+      ]
     },
     {
       "id": "ietf-on-path-telemetry-yang",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/draft-ietf-ippm-on-path-telemetry-yang/",
-      "tracks": ["on-path-telemetry-yang", "yang-push", "ioam"],
-      "check_for": ["revision", "working-group status", "YANG model change", "publication transition"]
+      "tracks": [
+        "on-path-telemetry-yang",
+        "yang-push",
+        "ioam"
+      ],
+      "check_for": [
+        "revision",
+        "working-group status",
+        "YANG model change",
+        "publication transition"
+      ]
     },
     {
       "id": "ietf-cats-framework",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/draft-ietf-cats-framework/",
-      "tracks": ["cats-framework"],
-      "check_for": ["RFC publication", "scope change", "multi-domain work", "compute or network metric semantics"]
+      "tracks": [
+        "cats-framework"
+      ],
+      "check_for": [
+        "RFC publication",
+        "scope change",
+        "multi-domain work",
+        "compute or network metric semantics"
+      ]
     },
     {
       "id": "ietf-cats-oam-framework",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/draft-ietf-cats-oam-fw/",
-      "tracks": ["cats-oam-framework"],
-      "check_for": ["revision", "data model", "fault or performance requirement", "multi-domain handling", "security and privacy"]
+      "tracks": [
+        "cats-oam-framework"
+      ],
+      "check_for": [
+        "revision",
+        "data model",
+        "fault or performance requirement",
+        "multi-domain handling",
+        "security and privacy"
+      ]
     },
     {
       "id": "ietf-cats-oam-usecases",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/draft-dikshit-cats-oam-usecases/",
-      "tracks": ["cats-oam-usecases"],
-      "check_for": ["revision", "working-group adoption", "new operator use case", "expiry"]
+      "tracks": [
+        "cats-oam-usecases"
+      ],
+      "check_for": [
+        "revision",
+        "working-group adoption",
+        "new operator use case",
+        "expiry"
+      ]
     },
     {
       "id": "ietf-quality-of-outcome",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/draft-ietf-ippm-qoo/",
-      "tracks": ["quality-of-outcome"],
-      "check_for": ["RFC publication", "metric or scoring semantics", "applicability or security change"]
+      "tracks": [
+        "quality-of-outcome"
+      ],
+      "check_for": [
+        "RFC publication",
+        "metric or scoring semantics",
+        "applicability or security change"
+      ]
     },
     {
       "id": "ietf-distributed-inference-transport",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/draft-li-tsvwg-inference-transport/",
-      "tracks": ["distributed-inference-transport"],
-      "check_for": ["revision", "working-group adoption", "new measurement requirement", "expiry or replacement"]
+      "tracks": [
+        "distributed-inference-transport"
+      ],
+      "check_for": [
+        "revision",
+        "working-group adoption",
+        "new measurement requirement",
+        "expiry or replacement"
+      ]
     },
     {
       "id": "ietf-agent-tool-proxy-modes",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/draft-gaikwad-agent-proxy-modes/",
-      "tracks": ["agent-tool-proxy-modes", "mcp-trace-context"],
-      "check_for": ["revision", "working-group adoption", "trace or hop semantic change", "security or privacy change", "expiry or replacement"]
+      "tracks": [
+        "agent-tool-proxy-modes",
+        "mcp-trace-context"
+      ],
+      "check_for": [
+        "revision",
+        "working-group adoption",
+        "trace or hop semantic change",
+        "security or privacy change",
+        "expiry or replacement"
+      ]
+    },
+    {
+      "id": "vllm-speculative-acceptance-metrics",
+      "organisation": "vLLM",
+      "url": "https://docs.vllm.ai/en/latest/features/speculative_decoding/acceptance_metrics/",
+      "tracks": [
+        "vllm-observability"
+      ],
+      "check_for": [
+        "stability or API change",
+        "field and schema semantics",
+        "aggregate-metric reconciliation",
+        "overhead or compatibility change"
+      ]
+    },
+    {
+      "id": "ietf-temporal-integrity-metadata",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-ackerman-temporal-integrity-metadata/",
+      "tracks": [
+        "temporal-integrity-metadata"
+      ],
+      "check_for": [
+        "revision",
+        "working-group adoption",
+        "uncertainty or provenance semantic change",
+        "transport binding",
+        "security or integrity change",
+        "expiry or replacement"
+      ]
     }
   ]
 }
