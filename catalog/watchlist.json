@@ -204,6 +204,20 @@
       "url": "https://datatracker.ietf.org/doc/draft-gaikwad-agent-proxy-modes/",
       "tracks": ["agent-tool-proxy-modes", "mcp-trace-context"],
       "check_for": ["revision", "working-group adoption", "trace or hop semantic change", "security or privacy change", "expiry or replacement"]
+    },
+    {
+      "id": "vllm-speculative-acceptance-metrics",
+      "organisation": "vLLM",
+      "url": "https://docs.vllm.ai/en/latest/features/speculative_decoding/acceptance_metrics/",
+      "tracks": ["vllm-observability"],
+      "check_for": ["stability or API change", "field and schema semantics", "aggregate-metric reconciliation", "overhead or compatibility change"]
+    },
+    {
+      "id": "ietf-temporal-integrity-metadata",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-ackerman-temporal-integrity-metadata/",
+      "tracks": ["temporal-integrity-metadata"],
+      "check_for": ["revision", "working-group adoption", "uncertainty or provenance semantic change", "transport binding", "security or integrity change", "expiry or replacement"]
     }
   ]
 }

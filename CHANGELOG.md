@@ -2,6 +2,13 @@
 
 Material changes to the landscape and catalogue are recorded here. Routine scans that find no substantive change do not create commits.
 
+## 0.3.0 — 2026-08-24
+
+- Added vLLM's experimental, opt-in per-request speculative-decoding acceptance metrics, including documented limitations and the relationship to aggregate Prometheus counters.
+- Added individual `draft-ackerman-temporal-integrity-metadata-01`, which proposes timestamp provenance, synchronisation-state, uncertainty, temporal-domain, and sequence metadata; it has no formal IETF standing.
+- Updated the time-quality gap to distinguish the new proposal from implementation, interoperability, or standards consensus.
+- Expanded the authoritative watchlist for vLLM acceptance-metric and TIM status changes.
+
 ## 0.2.0 — 2026-08-17
 
 - Added the Model Context Protocol 2026-07-28 release candidate and Final SEP-414 as a candidate task-correlation mechanism carrying W3C trace context through JSON-RPC `_meta`.

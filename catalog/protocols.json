@@ -177,11 +177,11 @@
       "type": "implementation",
       "maturity": "implementation",
       "version": "Rolling stable/latest documentation",
-      "status_notes": "Exposes Prometheus metrics, OpenTelemetry tracing, and optional per-request timing metrics.",
-      "evidence": ["queue time", "time to first token", "generation time", "inter-token latency", "token rate", "model forward time", "model execute time"],
-      "relevance": "Separates several inference-side delays that otherwise appear as one network-visible request time.",
-      "limitations": "Signals and overhead depend on configuration; implementation support does not create a provider-neutral exchange contract.",
-      "last_checked": "2026-08-13",
+      "status_notes": "Exposes Prometheus metrics, OpenTelemetry tracing, optional per-request timing metrics, and experimental opt-in per-request speculative-decoding acceptance metrics documented on 2026-08-20.",
+      "evidence": ["queue time", "time to first token", "generation time", "inter-token latency", "token rate", "model forward time", "model execute time", "speculative-decoding acceptance length", "draft acceptance rate", "accepted-draft distribution"],
+      "relevance": "Separates inference-side queue, execution, streaming, and speculative-decoding behaviour that otherwise appears as one network-visible request time.",
+      "limitations": "Signals and overhead depend on configuration; speculative-decoding fields are experimental, disabled by default, limited to single-sequence requests, and may change shape. Streaming delivery requires usage reporting, and implementation support does not create a provider-neutral exchange contract.",
+      "last_checked": "2026-08-24",
       "primary_sources": [
         {
           "title": "vLLM metrics and OpenTelemetry tracing",
@@ -190,6 +190,10 @@
         {
           "title": "vLLM per-request metrics",
           "url": "https://docs.vllm.ai/en/latest/features/per_request_metrics/"
+        },
+        {
+          "title": "vLLM per-request speculative decoding acceptance metrics",
+          "url": "https://docs.vllm.ai/en/latest/features/speculative_decoding/acceptance_metrics/"
         }
       ]
     },
@@ -487,6 +491,25 @@
         {
           "title": "Proxy Modes for Agent-Tool Protocols",
           "url": "https://datatracker.ietf.org/doc/draft-gaikwad-agent-proxy-modes/"
+        }
+      ]
+    },
+    {
+      "id": "temporal-integrity-metadata",
+      "name": "Temporal Integrity Metadata (TIM) for Infrastructure Telemetry",
+      "domain": "task-context",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-ackerman-temporal-integrity-metadata-01",
+      "status_notes": "Individual Internet-Draft dated 2026-08-08 and last updated 2026-08-10; it has no formal IETF standing. It proposes transport-agnostic metadata describing the temporal integrity of telemetry observations.",
+      "evidence": ["timestamp-generation provenance", "clock synchronisation state", "bounded timestamp uncertainty", "temporal reference domain", "monotonic sequence token"],
+      "relevance": "Directly addresses the documented need to qualify timestamps from heterogeneous application, inference, and network evidence before constructing a causal timeline.",
+      "limitations": "Work in progress with no working-group adoption, consensus, transport binding, interoperability evidence, or known implementation. Quality is self-declared; the draft does not synchronise clocks, guarantee declared accuracy, or establish causal order, and integrity and disclosure policy remain deployment concerns.",
+      "last_checked": "2026-08-24",
+      "primary_sources": [
+        {
+          "title": "Temporal Integrity Metadata (TIM) for Infrastructure Telemetry",
+          "url": "https://datatracker.ietf.org/doc/draft-ackerman-temporal-integrity-metadata/"
         }
       ]
     },
