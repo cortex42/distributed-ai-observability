@@ -10,12 +10,7 @@
       "maturity": "standard",
       "version": "Recommendation (2021)",
       "status_notes": "Standard HTTP headers and value formats for propagating distributed tracing context.",
-      "evidence": [
-        "trace ID",
-        "parent span",
-        "sampling flag",
-        "vendor trace state"
-      ],
+      "evidence": ["trace ID", "parent span", "sampling flag", "vendor trace state"],
       "relevance": "Provides the most widely applicable starting point for linking one AI task across HTTP service boundaries.",
       "limitations": "Propagation can stop or be regenerated at provider boundaries; it does not supply disclosure policy or proof of causality.",
       "last_checked": "2026-08-13",
@@ -34,12 +29,7 @@
       "maturity": "candidate",
       "version": "Candidate Recommendation Draft (2024-03-28)",
       "status_notes": "Adds trace/span ID generation considerations and a random trace-ID flag.",
-      "evidence": [
-        "trace ID",
-        "parent span",
-        "random trace-ID flag",
-        "sampling flag"
-      ],
+      "evidence": ["trace ID", "parent span", "random trace-ID flag", "sampling flag"],
       "relevance": "Random-ID signalling and more explicit ID-generation rules may affect safe cross-domain correlation and sampling.",
       "limitations": "Work in progress and not a final W3C Recommendation.",
       "last_checked": "2026-08-13",
@@ -58,9 +48,7 @@
       "maturity": "candidate",
       "version": "Candidate Recommendation Snapshot (2024-05-30)",
       "status_notes": "Standard representation and propagation of application-defined properties associated with a distributed workflow.",
-      "evidence": [
-        "application-defined workflow properties"
-      ],
+      "evidence": ["application-defined workflow properties"],
       "relevance": "Could carry scoped correlation or policy hints that are not part of trace identity.",
       "limitations": "High risk of sensitive-data leakage; requires strict allow-listing, size limits, and trust-boundary handling.",
       "last_checked": "2026-08-13",
@@ -79,13 +67,7 @@
       "maturity": "standard",
       "version": "1.44.0",
       "status_notes": "Common meanings and names for telemetry attributes, spans, metrics, events, logs, and resources.",
-      "evidence": [
-        "spans",
-        "metrics",
-        "events",
-        "logs",
-        "resources"
-      ],
+      "evidence": ["spans", "metrics", "events", "logs", "resources"],
       "relevance": "A shared vocabulary is necessary to combine evidence produced by different implementations.",
       "limitations": "Semantic compatibility does not guarantee context propagation, authorisation, retention, or topology mapping.",
       "last_checked": "2026-08-13",
@@ -108,14 +90,7 @@
       "maturity": "experimental",
       "version": "Unreleased separate repository",
       "status_notes": "Moved out of the core semantic-conventions repository in 2026; no release was present at the baseline check.",
-      "evidence": [
-        "GenAI client spans",
-        "model metrics",
-        "events",
-        "tool calls",
-        "MCP operations",
-        "provider-specific attributes"
-      ],
+      "evidence": ["GenAI client spans", "model metrics", "events", "tool calls", "MCP operations", "provider-specific attributes"],
       "relevance": "The most directly relevant emerging vocabulary for correlating agent, model, tool, and provider activity.",
       "limitations": "Fast-moving, unversioned at baseline, and not yet a stable cross-provider contract.",
       "last_checked": "2026-08-13",
@@ -138,14 +113,7 @@
       "maturity": "candidate",
       "version": "2026-07-28 specification release candidate; SEP-414 Final",
       "status_notes": "The MCP release candidate documents W3C trace context and baggage in JSON-RPC `_meta`. SEP-414 is Final in the MCP process, and official SDK documentation describes shipping propagation and span instrumentation.",
-      "evidence": [
-        "traceparent",
-        "tracestate",
-        "baggage",
-        "MCP method",
-        "protocol version",
-        "tool and prompt names"
-      ],
+      "evidence": ["traceparent", "tracestate", "baggage", "MCP method", "protocol version", "tool and prompt names"],
       "relevance": "Provides a protocol-defined carrier for following agent-to-tool requests across MCP clients, servers, and gateways, directly reducing a documented task-correlation gap.",
       "limitations": "The 2026-07-28 specification is a release candidate, not an IETF or W3C standard; SEP-414 documents conventions rather than requiring every implementation to emit or propagate them, SDK coverage varies, and correlation metadata still needs trust-boundary and data-minimisation policy.",
       "last_checked": "2026-08-17",
@@ -172,13 +140,7 @@
       "maturity": "standard",
       "version": "1.0",
       "status_notes": "Stable metric exposition format with broad Prometheus ecosystem adoption.",
-      "evidence": [
-        "counters",
-        "gauges",
-        "histograms",
-        "metric metadata",
-        "exemplars"
-      ],
+      "evidence": ["counters", "gauges", "histograms", "metric metadata", "exemplars"],
       "relevance": "A common metric format can carry inference, compute, and network health evidence between collection systems.",
       "limitations": "Aggregated time series often cannot explain the critical path of one transaction.",
       "last_checked": "2026-08-13",
@@ -197,11 +159,7 @@
       "maturity": "experimental",
       "version": "Release candidate / experimental",
       "status_notes": "Second-generation OpenMetrics work with improved alignment to the OpenTelemetry data model and naming conventions.",
-      "evidence": [
-        "metrics",
-        "metadata",
-        "modern Prometheus data types"
-      ],
+      "evidence": ["metrics", "metadata", "modern Prometheus data types"],
       "relevance": "Potentially improves interoperability between inference metrics, Prometheus systems, and OpenTelemetry.",
       "limitations": "Experimental at baseline; compatibility and production adoption are not established.",
       "last_checked": "2026-08-13",
@@ -220,18 +178,7 @@
       "maturity": "implementation",
       "version": "Rolling stable/latest documentation",
       "status_notes": "Exposes Prometheus metrics, OpenTelemetry tracing, optional per-request timing metrics, and experimental opt-in per-request speculative-decoding acceptance metrics documented on 2026-08-20.",
-      "evidence": [
-        "queue time",
-        "time to first token",
-        "generation time",
-        "inter-token latency",
-        "token rate",
-        "model forward time",
-        "model execute time",
-        "speculative-decoding acceptance length",
-        "draft acceptance rate",
-        "accepted-draft distribution"
-      ],
+      "evidence": ["queue time", "time to first token", "generation time", "inter-token latency", "token rate", "model forward time", "model execute time", "speculative-decoding acceptance length", "draft acceptance rate", "accepted-draft distribution"],
       "relevance": "Separates inference-side queue, execution, streaming, and speculative-decoding behaviour that otherwise appears as one network-visible request time.",
       "limitations": "Signals and overhead depend on configuration; speculative-decoding fields are experimental, disabled by default, limited to single-sequence requests, and may change shape. Streaming delivery requires usage reporting, and implementation support does not create a provider-neutral exchange contract.",
       "last_checked": "2026-08-24",
@@ -258,13 +205,7 @@
       "maturity": "implementation",
       "version": "Rolling product documentation",
       "status_notes": "Provides Prometheus request/GPU/cache metrics and per-request tracing using Triton or OpenTelemetry modes.",
-      "evidence": [
-        "request counts",
-        "request durations",
-        "GPU metrics",
-        "cache metrics",
-        "per-request trace timestamps"
-      ],
+      "evidence": ["request counts", "request durations", "GPU metrics", "cache metrics", "per-request trace timestamps"],
       "relevance": "Provides inference and accelerator evidence that can be correlated with task and network observations.",
       "limitations": "Telemetry configuration, naming, sampling, retention, and visibility are deployment-specific.",
       "last_checked": "2026-08-13",
@@ -287,13 +228,7 @@
       "maturity": "standard",
       "version": "0.11.0 in revision history; document header states 0.10.0",
       "status_notes": "The March 2026 revision history adds v0.11.0, while the visible specification header still reports v0.10.0 and 0.10.x compatibility.",
-      "evidence": [
-        "operational state",
-        "configuration state",
-        "streaming telemetry",
-        "timestamps",
-        "model capabilities"
-      ],
+      "evidence": ["operational state", "configuration state", "streaming telemetry", "timestamps", "model capabilities"],
       "relevance": "Supplies detailed device and interface evidence needed to separate path/device degradation from compute delay.",
       "limitations": "Local device paths and counters need topology and transaction mapping; the baseline source has an internal version inconsistency.",
       "last_checked": "2026-08-13",
@@ -312,11 +247,7 @@
       "maturity": "standard",
       "version": "RFC 8639, RFC 8640, RFC 8641",
       "status_notes": "Subscription and push mechanisms for YANG datastore updates, including on-change notifications.",
-      "evidence": [
-        "periodic YANG data",
-        "on-change YANG data",
-        "subscription state"
-      ],
+      "evidence": ["periodic YANG data", "on-change YANG data", "subscription state"],
       "relevance": "Can publish modelled network and on-path telemetry without continuous polling.",
       "limitations": "Data models, access control, topology mapping, and cross-domain correlation remain separate concerns.",
       "last_checked": "2026-08-13",
@@ -335,13 +266,7 @@
       "maturity": "standard",
       "version": "RFC 7011 / STD 77",
       "status_notes": "Standards-track protocol for exporting traffic-flow information from exporters to collectors.",
-      "evidence": [
-        "flow identity",
-        "volume",
-        "timing",
-        "endpoints",
-        "exporter-defined information elements"
-      ],
+      "evidence": ["flow identity", "volume", "timing", "endpoints", "exporter-defined information elements"],
       "relevance": "Shows who communicated, when, and at what scale across network boundaries.",
       "limitations": "Sampling and aggregation can obscure short incidents; flow identity does not establish application causality.",
       "last_checked": "2026-08-13",
@@ -360,12 +285,7 @@
       "maturity": "standard",
       "version": "RFC 7854 with active extension work",
       "status_notes": "Provides route views and BGP session monitoring; active work includes BMP v4/TLV and routing-event extensions.",
-      "evidence": [
-        "route views",
-        "BGP updates",
-        "peer/session state",
-        "policy stages through extensions"
-      ],
+      "evidence": ["route views", "BGP updates", "peer/session state", "policy stages through extensions"],
       "relevance": "Can place routing changes on the same timeline as application and inference degradation.",
       "limitations": "Temporal coincidence is not causal proof; visibility depends on where BMP is collected.",
       "last_checked": "2026-08-13",
@@ -388,12 +308,7 @@
       "maturity": "standard",
       "version": "RFC 8762 / RFC 5357 families",
       "status_notes": "Active measurement protocols for one-way and round-trip performance metrics.",
-      "evidence": [
-        "delay",
-        "delay variation",
-        "packet loss",
-        "round-trip performance"
-      ],
+      "evidence": ["delay", "delay variation", "packet loss", "round-trip performance"],
       "relevance": "Provides controlled path-performance evidence independent of application and inference instrumentation.",
       "limitations": "Probe paths and treatment may differ from the transaction; one-way interpretation depends on time quality.",
       "last_checked": "2026-08-13",
@@ -412,12 +327,7 @@
       "maturity": "standard",
       "version": "RFC 9197 family",
       "status_notes": "Defines on-path operational and telemetry data fields for use inside limited IOAM domains, with direct-export and encapsulation extensions.",
-      "evidence": [
-        "per-hop trace data",
-        "proof-of-transit fields",
-        "edge-to-edge data",
-        "direct export"
-      ],
+      "evidence": ["per-hop trace data", "proof-of-transit fields", "edge-to-edge data", "direct export"],
       "relevance": "Can produce fine-grained path evidence that complements active probes and device counters.",
       "limitations": "Limited-domain model, deployment overhead, integrity, privacy, and cross-domain disclosure constraints.",
       "last_checked": "2026-08-13",
@@ -440,11 +350,7 @@
       "maturity": "framework",
       "version": "RFC 9232",
       "status_notes": "Taxonomy and framework covering telemetry acquisition, export, analysis, and techniques including active, passive, and hybrid measurement.",
-      "evidence": [
-        "telemetry taxonomy",
-        "method classification",
-        "architectural relationships"
-      ],
+      "evidence": ["telemetry taxonomy", "method classification", "architectural relationships"],
       "relevance": "Provides a standards-based map for the network portion of the observability landscape.",
       "limitations": "Does not define a cross-domain task-correlation or disclosure protocol.",
       "last_checked": "2026-08-13",
@@ -463,12 +369,7 @@
       "maturity": "draft",
       "version": "draft-ietf-ippm-on-path-telemetry-yang-06",
       "status_notes": "IETF working-group draft revised 2026-08-26. Revision -06 redesigns the module to augment the existing AltMark and IOAM YANG models rather than duplicate their configuration structure.",
-      "evidence": [
-        "Alternate Marking loss and delay data",
-        "IOAM trace, proof-of-transit, direct-export, and edge-to-edge data",
-        "timestamp-type metadata",
-        "IPFIX-aligned path-delay summary metrics"
-      ],
+      "evidence": ["Alternate Marking loss and delay data", "IOAM trace, proof-of-transit, direct-export, and edge-to-edge data", "timestamp-type metadata", "IPFIX-aligned path-delay summary metrics"],
       "relevance": "Makes selected on-path evidence available through model-driven telemetry and YANG-Push while aligning it with existing AltMark and IOAM configuration models.",
       "limitations": "Work in progress and limited to Alternate Marking and IOAM. The revision does not define cross-domain identifier scope, clock-quality metadata, task correlation, or disclosure policy; an early performance-metrics review still records the draft as not ready.",
       "last_checked": "2026-08-31",
@@ -487,11 +388,7 @@
       "maturity": "candidate",
       "version": "draft-ietf-cats-framework-24; RFC Editor Queue",
       "status_notes": "IETF framework for combining network and computing-resource information when selecting a service instance; baseline framework covers one service provider.",
-      "evidence": [
-        "network status",
-        "compute status",
-        "service-instance selection inputs"
-      ],
+      "evidence": ["network status", "compute status", "service-instance selection inputs"],
       "relevance": "Directly overlaps the talk's hypothesis that live network and compute signals may influence inference placement.",
       "limitations": "Framework scope and single-provider assumption do not solve multi-provider observability or federation.",
       "last_checked": "2026-08-13",
@@ -510,13 +407,7 @@
       "maturity": "draft",
       "version": "draft-ietf-cats-oam-fw-01",
       "status_notes": "IETF working-group draft dated 2026-07-21 covering fault management and performance monitoring across clients, network paths, and service instances.",
-      "evidence": [
-        "client OAM",
-        "network path OAM",
-        "service OAM",
-        "instance OAM",
-        "fault and performance state"
-      ],
+      "evidence": ["client OAM", "network path OAM", "service OAM", "instance OAM", "fault and performance state"],
       "relevance": "One of the closest current standards efforts to joint network-and-compute causal evidence.",
       "limitations": "Early work in progress; data models, cross-domain trust, and implementation experience remain open.",
       "last_checked": "2026-08-13",
@@ -535,11 +426,7 @@
       "maturity": "draft",
       "version": "draft-dikshit-cats-oam-usecases-00",
       "status_notes": "Individual Internet-Draft dated 2026-07-31; it has no formal IETF standing at baseline.",
-      "evidence": [
-        "multi-domain failure detection",
-        "SLA verification",
-        "metric-driven steering use cases"
-      ],
+      "evidence": ["multi-domain failure detection", "SLA verification", "metric-driven steering use cases"],
       "relevance": "Provides operator-oriented scenarios against which FOX and other cross-domain models can be tested.",
       "limitations": "Individual draft, not IETF consensus; must be treated as a discovery source and working proposal.",
       "last_checked": "2026-08-13",
@@ -558,11 +445,7 @@
       "maturity": "candidate",
       "version": "draft-ietf-ippm-qoo-11",
       "status_notes": "IETF working-group document in advanced processing at baseline; defines application-specific network quality assessment and outcome scores.",
-      "evidence": [
-        "application performance requirements",
-        "network quality distributions",
-        "outcome score"
-      ],
+      "evidence": ["application performance requirements", "network quality distributions", "outcome score"],
       "relevance": "May help translate network measurements into an application-facing signal suitable for placement or troubleshooting.",
       "limitations": "A quality score does not identify the causal component and may hide distribution or measurement assumptions.",
       "last_checked": "2026-08-13",
@@ -581,12 +464,7 @@
       "maturity": "draft",
       "version": "draft-li-tsvwg-inference-transport-00",
       "status_notes": "Individual Internet-Draft dated 2026-07-04; it has no formal IETF standing at baseline.",
-      "evidence": [
-        "KV-cache transfer traffic",
-        "expert-parallel traffic",
-        "path load",
-        "transport behaviour"
-      ],
+      "evidence": ["KV-cache transfer traffic", "expert-parallel traffic", "path load", "transport behaviour"],
       "relevance": "Directly addresses traffic generated by disaggregated and expert-parallel inference and may produce new measurement requirements.",
       "limitations": "Early individual proposal focused largely on large-scale inference networks; it must not be presented as consensus or general WAN evidence.",
       "last_checked": "2026-08-13",
@@ -605,14 +483,7 @@
       "maturity": "draft",
       "version": "draft-gaikwad-agent-proxy-modes-00",
       "status_notes": "Individual Internet-Draft published 2026-08-13 with no formal IETF standing. It proposes W3C trace propagation, append-only hop metadata, and intermediary metrics for agent-tool protocol proxies.",
-      "evidence": [
-        "W3C trace context",
-        "intermediary hop sequence",
-        "request counts",
-        "latency percentiles",
-        "circuit-breaker transitions",
-        "cache and connection metrics"
-      ],
+      "evidence": ["W3C trace context", "intermediary hop sequence", "request counts", "latency percentiles", "circuit-breaker transitions", "cache and connection metrics"],
       "relevance": "Directly addresses observability across agent-tool intermediaries and makes routing, retry, partial-failure, and gateway-hop behaviour more visible.",
       "limitations": "Early individual proposal with no IETF consensus or demonstrated interoperable implementation; its hop metadata may expose topology and requires integrity, privacy, and bounded-disclosure controls.",
       "last_checked": "2026-08-17",
@@ -631,13 +502,7 @@
       "maturity": "draft",
       "version": "draft-ackerman-temporal-integrity-metadata-01",
       "status_notes": "Individual Internet-Draft dated 2026-08-08 and last updated 2026-08-10; it has no formal IETF standing. It proposes transport-agnostic metadata describing the temporal integrity of telemetry observations.",
-      "evidence": [
-        "timestamp-generation provenance",
-        "clock synchronisation state",
-        "bounded timestamp uncertainty",
-        "temporal reference domain",
-        "monotonic sequence token"
-      ],
+      "evidence": ["timestamp-generation provenance", "clock synchronisation state", "bounded timestamp uncertainty", "temporal reference domain", "monotonic sequence token"],
       "relevance": "Directly addresses the documented need to qualify timestamps from heterogeneous application, inference, and network evidence before constructing a causal timeline.",
       "limitations": "Work in progress with no working-group adoption, consensus, transport binding, interoperability evidence, or known implementation. Quality is self-declared; the draft does not synchronise clocks, guarantee declared accuracy, or establish causal order, and integrity and disclosure policy remain deployment concerns.",
       "last_checked": "2026-08-24",
@@ -656,12 +521,7 @@
       "maturity": "draft",
       "version": "draft-dikshit-nmop-telemetry-identifier-scoping-00",
       "status_notes": "Individual Internet-Draft dated 2026-08-26; it has no formal IETF standing. It proposes vocabulary and requirements for stating identifier uniqueness scope and cross-node comparability.",
-      "evidence": [
-        "node-local, domain-local, controller-scoped, and globally unique identifier scopes",
-        "cross-node comparability rules",
-        "handling for omitted optional correlation identifiers",
-        "receiver-safe default to node-local scope"
-      ],
+      "evidence": ["node-local, domain-local, controller-scoped, and globally unique identifier scopes", "cross-node comparability rules", "handling for omitted optional correlation identifiers", "receiver-safe default to node-local scope"],
       "relevance": "Directly addresses ambiguity that can cause collectors to merge unrelated records or fail to correlate related network evidence across devices and domains.",
       "limitations": "Work in progress with no working-group adoption, consensus, wire format, registered YANG identity, implementation, or interoperability evidence. Scope statements remain claims by the originator and do not authenticate or independently verify identity, time, or integrity.",
       "last_checked": "2026-08-31",
@@ -680,14 +540,7 @@
       "maturity": "working-hypothesis",
       "version": "0.1 concept",
       "status_notes": "Project hypothesis for neutral, policy-controlled exchange of selected cross-domain evidence.",
-      "evidence": [
-        "authorised evidence envelopes",
-        "schema discovery",
-        "policy",
-        "subscriptions",
-        "correlation",
-        "audit"
-      ],
+      "evidence": ["authorised evidence envelopes", "schema discovery", "policy", "subscriptions", "correlation", "audit"],
       "relevance": "Explores whether neutral interconnection can address the coordination gap left by domain-local observability tools.",
       "limitations": "No protocol, implementation, deployment, or independent validation exists at baseline.",
       "last_checked": "2026-08-13",
