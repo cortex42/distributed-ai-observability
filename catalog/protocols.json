@@ -367,12 +367,12 @@
       "domain": "path-measurement",
       "type": "internet-draft",
       "maturity": "draft",
-      "version": "draft-ietf-ippm-on-path-telemetry-yang-05",
-      "status_notes": "IETF working-group draft published 2026-07-29 for Alternate Marking and IOAM data via YANG notifications/YANG-Push.",
-      "evidence": ["loss", "delay", "jitter", "IOAM data", "Alternate Marking data"],
-      "relevance": "Could make on-path evidence available through model-driven telemetry and subscriptions.",
-      "limitations": "Work in progress; scope is specific to Alternate Marking and IOAM.",
-      "last_checked": "2026-08-13",
+      "version": "draft-ietf-ippm-on-path-telemetry-yang-06",
+      "status_notes": "IETF working-group draft revised 2026-08-26. Revision -06 redesigns the module to augment the existing AltMark and IOAM YANG models rather than duplicate their configuration structure.",
+      "evidence": ["Alternate Marking loss and delay data", "IOAM trace, proof-of-transit, direct-export, and edge-to-edge data", "timestamp-type metadata", "IPFIX-aligned path-delay summary metrics"],
+      "relevance": "Makes selected on-path evidence available through model-driven telemetry and YANG-Push while aligning it with existing AltMark and IOAM configuration models.",
+      "limitations": "Work in progress and limited to Alternate Marking and IOAM. The revision does not define cross-domain identifier scope, clock-quality metadata, task correlation, or disclosure policy; an early performance-metrics review still records the draft as not ready.",
+      "last_checked": "2026-08-31",
       "primary_sources": [
         {
           "title": "On-Path Telemetry YANG Data Model",
@@ -510,6 +510,25 @@
         {
           "title": "Temporal Integrity Metadata (TIM) for Infrastructure Telemetry",
           "url": "https://datatracker.ietf.org/doc/draft-ackerman-temporal-integrity-metadata/"
+        }
+      ]
+    },
+    {
+      "id": "telemetry-identifier-scoping",
+      "name": "Scoping and Comparability Requirements for Exported Network Telemetry Identifiers",
+      "domain": "flow-routing",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-dikshit-nmop-telemetry-identifier-scoping-00",
+      "status_notes": "Individual Internet-Draft dated 2026-08-26; it has no formal IETF standing. It proposes vocabulary and requirements for stating identifier uniqueness scope and cross-node comparability.",
+      "evidence": ["node-local, domain-local, controller-scoped, and globally unique identifier scopes", "cross-node comparability rules", "handling for omitted optional correlation identifiers", "receiver-safe default to node-local scope"],
+      "relevance": "Directly addresses ambiguity that can cause collectors to merge unrelated records or fail to correlate related network evidence across devices and domains.",
+      "limitations": "Work in progress with no working-group adoption, consensus, wire format, registered YANG identity, implementation, or interoperability evidence. Scope statements remain claims by the originator and do not authenticate or independently verify identity, time, or integrity.",
+      "last_checked": "2026-08-31",
+      "primary_sources": [
+        {
+          "title": "Scoping and Comparability Requirements for Exported Network Telemetry Identifiers",
+          "url": "https://datatracker.ietf.org/doc/draft-dikshit-nmop-telemetry-identifier-scoping/"
         }
       ]
     },

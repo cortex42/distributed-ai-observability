@@ -218,6 +218,13 @@
       "url": "https://datatracker.ietf.org/doc/draft-ackerman-temporal-integrity-metadata/",
       "tracks": ["temporal-integrity-metadata"],
       "check_for": ["revision", "working-group adoption", "uncertainty or provenance semantic change", "transport binding", "security or integrity change", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-telemetry-identifier-scoping",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-dikshit-nmop-telemetry-identifier-scoping/",
+      "tracks": ["telemetry-identifier-scoping", "on-path-telemetry-yang", "ipfix", "bmp"],
+      "check_for": ["revision", "working-group adoption", "scope vocabulary change", "comparability semantic change", "wire-format or YANG binding", "security or integrity change", "expiry or replacement"]
     }
   ]
 }

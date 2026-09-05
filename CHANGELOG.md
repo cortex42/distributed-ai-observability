@@ -2,6 +2,13 @@
 
 Material changes to the landscape and catalogue are recorded here. Routine scans that find no substantive change do not create commits.
 
+## 0.4.0 — 2026-08-31
+
+- Updated the IPPM On-Path Telemetry YANG entry from `-05` to the substantively redesigned `-06` revision, including its augmentation of the existing AltMark and IOAM models, timestamp-type context, and IPFIX-aligned path-delay metrics.
+- Added individual `draft-dikshit-nmop-telemetry-identifier-scoping-00`, which proposes explicit uniqueness scopes, cross-node comparability rules, and omitted-identifier handling; it has no formal IETF standing.
+- Refined the correlation gap to distinguish network-telemetry identifier scope from task-level correlation, privacy policy, authentication, and cross-domain evidence mapping.
+- Added the new identifier-scoping draft to the authoritative watchlist.
+
 ## 0.3.0 — 2026-08-24
 
 - Added vLLM's experimental, opt-in per-request speculative-decoding acceptance metrics, including documented limitations and the relationship to aggregate Prometheus counters.

@@ -66,7 +66,7 @@ Each participant normally sees a useful but incomplete slice. A route change and
 | [STAMP](https://datatracker.ietf.org/doc/rfc8762/) and TWAMP | RFC 8762 and RFC 5357 | Active one-way and round-trip delay, variation, and loss measurement | probes provide indirect evidence and depend on placement and time quality |
 | [IOAM](https://datatracker.ietf.org/doc/rfc9197/) | RFC 9197 family, including direct export and YANG work | In-domain on-path operational and telemetry data | designed for limited domains; cross-domain policy and exposure are unresolved |
 | [Network Telemetry Framework](https://datatracker.ietf.org/doc/rfc9232/) | RFC 9232 | A useful taxonomy spanning push, pull, active, passive, and hybrid techniques | framework rather than a transaction-correlation mechanism |
-| [On-Path Telemetry YANG](https://datatracker.ietf.org/doc/draft-ietf-ippm-on-path-telemetry-yang/) | Internet-Draft `-05`, July 2026 | YANG model for Alternate Marking and IOAM performance data via YANG-Push | work in progress and currently limited to specific on-path methods |
+| [On-Path Telemetry YANG](https://datatracker.ietf.org/doc/draft-ietf-ippm-on-path-telemetry-yang/) | IETF working-group draft `-06`, 26 August 2026 | Augments the AltMark and IOAM YANG models with loss/delay evidence, timestamp type, IOAM data, and IPFIX-aligned path-delay summaries for YANG-Push | work in progress; limited to specific on-path methods and does not define cross-domain identifier scope, task correlation, or disclosure policy |
 
 ## 4. Particularly relevant emerging work
 
@@ -81,6 +81,7 @@ The following work is not proof that distributed AI observability will develop i
 | [Transport Considerations for Large-Scale Distributed Inference Networks](https://datatracker.ietf.org/doc/draft-li-tsvwg-inference-transport/) | Individual draft `-00`, July 2026; no formal IETF standing | describes distributed-inference traffic such as prefill/decode KV-cache transfer and expert-parallel flows; it should be tracked, not treated as consensus |
 | [Proxy Modes for Agent-Tool Protocols](https://datatracker.ietf.org/doc/draft-gaikwad-agent-proxy-modes/) | Individual draft `-00`, 13 August 2026; no formal IETF standing | proposes W3C trace propagation, append-only gateway-hop metadata, and intermediary metrics for MCP-like traffic, while also defining retry and partial-failure behaviour |
 | [Temporal Integrity Metadata for Infrastructure Telemetry](https://datatracker.ietf.org/doc/draft-ackerman-temporal-integrity-metadata/) | Individual draft `-01`, 8 August 2026; no formal IETF standing | proposes source, synchronisation-state, uncertainty-bound, temporal-domain, and sequence metadata needed to judge whether heterogeneous timestamps can support causal reconstruction |
+| [Telemetry identifier scoping and comparability](https://datatracker.ietf.org/doc/draft-dikshit-nmop-telemetry-identifier-scoping/) | Individual draft `-00`, 26 August 2026; no formal IETF standing | identifies recurring ambiguity in exported identifiers and proposes explicit uniqueness scopes, cross-node comparability rules, and safe handling of omitted identifiers; it defines no wire format or implementation |
 
 ## 5. What is missing
 
@@ -88,7 +89,7 @@ No single protocol currently supplies the minimum ingredients needed for a defen
 
 MCP SEP-414 is a concrete improvement for the application side of that timeline: it standardises the carrier keys needed to continue a trace through agent-to-tool calls, and official SDK work makes the signal deployable. It does not connect those spans to network paths, inference queues, provider evidence, time-quality metadata, or cross-domain disclosure policy.
 
-1. **Shared but privacy-safe correlation identifiers.** A task, span, flow, route event, measurement, and inference request need a controlled way to refer to the same transaction.
+1. **Shared but privacy-safe correlation identifiers.** The individual telemetry-identifier-scoping draft makes a narrower but important contribution: exported network identifiers should state whether they are node-local, domain-local, controller-scoped, or globally unique, and should define cross-node comparability. It has no formal IETF standing and defines neither a task-level identifier nor a wire format, privacy policy, authentication, or mapping between application, inference, flow, route, and measurement evidence.
 2. **Time quality and uncertainty.** The individual TIM draft proposes provenance, synchronisation-state, temporal-domain, and bounded-uncertainty metadata, but it has no formal IETF standing, implementation evidence, transport binding, or guarantee that declared quality is correct.
 3. **A common evidence vocabulary.** Queue time, provider ingress, TTFT, tool timeout, route change, and packet loss must have stable semantics.
 4. **Topology and service mapping.** Evidence must be mapped from local interfaces, paths, and service instances to the transaction without exposing unrestricted topology.
