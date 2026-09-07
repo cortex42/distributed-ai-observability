@@ -519,12 +519,12 @@
       "domain": "flow-routing",
       "type": "internet-draft",
       "maturity": "draft",
-      "version": "draft-dikshit-nmop-telemetry-identifier-scoping-00",
-      "status_notes": "Individual Internet-Draft dated 2026-08-26; it has no formal IETF standing. It proposes vocabulary and requirements for stating identifier uniqueness scope and cross-node comparability.",
-      "evidence": ["node-local, domain-local, controller-scoped, and globally unique identifier scopes", "cross-node comparability rules", "handling for omitted optional correlation identifiers", "receiver-safe default to node-local scope"],
-      "relevance": "Directly addresses ambiguity that can cause collectors to merge unrelated records or fail to correlate related network evidence across devices and domains.",
-      "limitations": "Work in progress with no working-group adoption, consensus, wire format, registered YANG identity, implementation, or interoperability evidence. Scope statements remain claims by the originator and do not authenticate or independently verify identity, time, or integrity.",
-      "last_checked": "2026-08-31",
+      "version": "draft-dikshit-nmop-telemetry-identifier-scoping-01",
+      "status_notes": "Individual Internet-Draft revised 2026-09-04; it has no formal IETF standing. Revision -01 substantially replaces the earlier vocabulary-centric structure with broader requirements for defining the scope and comparability of telemetry identifiers and statistics.",
+      "evidence": ["uniqueness and meaningful scope", "context or instance", "observation or measurement domain", "cross-context comparability domain", "time scope", "aggregation or normalization semantics", "value equality versus object identity"],
+      "relevance": "Directly addresses semantic ambiguity that can cause collectors to merge unrelated records, compare incommensurate values, or construct invalid cross-domain evidence timelines.",
+      "limitations": "Work in progress with no working-group adoption, consensus, wire format, data model, implementation, or interoperability evidence. Revision -01 no longer defines the four named scope values or omitted-identifier default from -00; its abstract says scope and comparison conditions MUST be explicit while the requirements section says identifiers or statistics SHOULD define them, so normative strength remains uncertain. Declared scope also does not authenticate or independently verify identity, time, or integrity.",
+      "last_checked": "2026-09-07",
       "primary_sources": [
         {
           "title": "Scoping and Comparability Requirements for Exported Network Telemetry Identifiers",
