@@ -2,6 +2,12 @@
 
 Material changes to the landscape and catalogue are recorded here. Routine scans that find no substantive change do not create commits.
 
+## 0.5.0 — 2026-09-07
+
+- Updated the individual telemetry-identifier-scoping draft from `-00` to the substantively rewritten `-01` revision published 4 September 2026; it still has no formal IETF standing.
+- Replaced the retired four-value scope vocabulary and omitted-identifier default with the revision's broader semantics for uniqueness, context, observation domain, comparability, time scope, normalization, and equality versus identity.
+- Recorded the draft's remaining uncertainty: no wire format, data model, implementation, interoperability evidence, or working-group adoption, plus inconsistent `MUST`/`SHOULD` strength between the abstract and requirements.
+
 ## 0.4.0 — 2026-08-31
 
 - Updated the IPPM On-Path Telemetry YANG entry from `-05` to the substantively redesigned `-06` revision, including its augmentation of the existing AltMark and IOAM models, timestamp-type context, and IPFIX-aligned path-delay metrics.
