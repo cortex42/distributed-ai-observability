@@ -2,6 +2,13 @@
 
 Material changes to the landscape and catalogue are recorded here. Routine scans that find no substantive change do not create commits.
 
+## 0.6.0 — 2026-09-14
+
+- Added the IETF OPSAWG Data Manifest `-15`, which entered IETF Last Call for Proposed Standard and preserves platform, schema, subscription, and actual collection-period context for YANG telemetry.
+- Added individual `draft-arsentev-agent-run-metrics-00` for agent-run resource accounting, delegation lineage, and W3C trace/span bindings; it has no formal IETF standing and no known implementation.
+- Refined the common-vocabulary, topology-mapping, and retry/delegation gaps to distinguish these proposals from end-to-end cross-domain correlation, verified evidence, privacy policy, and implementation.
+- Added both authoritative Datatracker sources to the watchlist.
+
 ## 0.5.0 — 2026-09-07
 
 - Updated the individual telemetry-identifier-scoping draft from `-00` to the substantively rewritten `-01` revision published 4 September 2026; it still has no formal IETF standing.
