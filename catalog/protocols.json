@@ -533,6 +533,44 @@
       ]
     },
     {
+      "id": "ietf-data-manifest",
+      "name": "Data Manifest for Contextualized Telemetry Data",
+      "domain": "device-telemetry",
+      "type": "internet-draft",
+      "maturity": "candidate",
+      "version": "draft-ietf-opsawg-collected-data-manifest-15",
+      "status_notes": "IETF OPSAWG document revised 2026-09-11 and in IETF Last Call through 2026-09-26 for publication as a Proposed Standard. It specifies metadata for preserving the interpretation context of collected network telemetry.",
+      "evidence": ["platform identity and vendor", "software and operating-system versions", "YANG library and schema revisions", "subscription identifier", "configured collection mode", "actual collection period"],
+      "relevance": "Makes YANG telemetry more defensible for later analysis by binding observations to the platform, schema, subscription, and collection conditions under which they were produced.",
+      "limitations": "Not yet an RFC. The Platform Manifest and current-period augmentation are normative, but the Data Collection Manifest remains a non-normative example because YANG lacks design-time schema mount. Data lineage, task correlation, cross-domain disclosure policy, and proof that metadata is accurate are out of scope; the current Last Call includes a Security Directorate review marked as having issues.",
+      "last_checked": "2026-09-14",
+      "primary_sources": [
+        {
+          "title": "A Data Manifest for Contextualized Telemetry Data",
+          "url": "https://datatracker.ietf.org/doc/draft-ietf-opsawg-collected-data-manifest/"
+        }
+      ]
+    },
+    {
+      "id": "agent-run-metrics",
+      "name": "Agent Run Metrics",
+      "domain": "task-context",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-arsentev-agent-run-metrics-00",
+      "status_notes": "Individual Internet-Draft published 2026-09-10 with no formal IETF standing. It proposes a JSON interchange report for resource accounting and execution structure of language-model agent runs.",
+      "evidence": ["run, parent-run, and root-run identifiers", "model-invocation, tool-call, and delegation steps", "token and context usage", "timing, status, termination, and error metadata", "cost and derived amplification metrics", "W3C trace ID and span ID bindings"],
+      "relevance": "Directly addresses the documented need for retry and delegation lineage and offers a candidate vocabulary for joining per-run agent activity to distributed traces without including prompts, completions, tool arguments, or tool results.",
+      "limitations": "Early individual proposal with no IETF consensus, working-group adoption, known implementation, or interoperability evidence. Reports are assertions by the reporter rather than independently verified consumption evidence; signatures, provider reconciliation, and authentication mechanisms are out of scope. Counters and persistent run identifiers can still disclose sensitive activity patterns and require retention, namespace, size, and rate controls.",
+      "last_checked": "2026-09-14",
+      "primary_sources": [
+        {
+          "title": "Agent Run Metrics: A JSON Interchange Format for Resource Accounting of Language-Model Agent Runs",
+          "url": "https://datatracker.ietf.org/doc/draft-arsentev-agent-run-metrics/"
+        }
+      ]
+    },
+    {
       "id": "fox",
       "name": "Federated Observability Exchange (FOX)",
       "domain": "project-concept",
