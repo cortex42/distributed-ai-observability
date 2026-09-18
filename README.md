@@ -38,4 +38,6 @@ Corrections and additions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTIN
 
 ## License
 
-No reuse licence has been selected yet. See [LICENSE.md](LICENSE.md) for the current terms.
+Original documentation and catalogue content are licensed under [CC BY 4.0](LICENSES/CC-BY-4.0.txt). Scripts, workflow/configuration files and source-code examples are licensed under [MIT](LICENSES/MIT.txt).
+
+You may reuse and adapt the material, including commercially, under the applicable licence. See [LICENSE.md](LICENSE.md) for the scope, attribution example and third-party material.
