@@ -8,6 +8,12 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 - Recorded ntop as mature production evidence for network-local observability while explicitly retaining the cross-domain gap: flow/application evidence does not by itself correlate to AI tasks, model queues, agent operations, retries, or user-visible outcomes.
 - Added `www.ntop.org` to the authoritative-source allowlist so future ntop documentation can be tracked through the repository validation process.
 - Documented a possible FOX participant-gateway pattern in which raw packet/flow/DPI data remains local and only authorised derived evidence is exported.
+## 0.6.0 — 2026-09-14
+
+- Added the IETF OPSAWG Data Manifest `-15`, which entered IETF Last Call for Proposed Standard and preserves platform, schema, subscription, and actual collection-period context for YANG telemetry.
+- Added individual `draft-arsentev-agent-run-metrics-00` for agent-run resource accounting, delegation lineage, and W3C trace/span bindings; it has no formal IETF standing and no known implementation.
+- Refined the common-vocabulary, topology-mapping, and retry/delegation gaps to distinguish these proposals from end-to-end cross-domain correlation, verified evidence, privacy policy, and implementation.
+- Added both authoritative Datatracker sources to the watchlist.
 
 ## 0.5.0 — 2026-09-07
 

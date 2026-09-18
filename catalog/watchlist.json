@@ -225,6 +225,20 @@
       "url": "https://datatracker.ietf.org/doc/draft-dikshit-nmop-telemetry-identifier-scoping/",
       "tracks": ["telemetry-identifier-scoping", "on-path-telemetry-yang", "ipfix", "bmp"],
       "check_for": ["revision", "working-group adoption", "scope vocabulary change", "comparability semantic change", "wire-format or YANG binding", "security or integrity change", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-data-manifest",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-ietf-opsawg-collected-data-manifest/",
+      "tracks": ["ietf-data-manifest", "yang-push"],
+      "check_for": ["Last Call outcome", "revision", "IESG or RFC transition", "normative Data Collection Manifest", "security or privacy change", "implementation evidence"]
+    },
+    {
+      "id": "ietf-agent-run-metrics",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-arsentev-agent-run-metrics/",
+      "tracks": ["agent-run-metrics"],
+      "check_for": ["revision", "working-group adoption", "run or delegation semantic change", "trace binding", "privacy or security change", "implementation evidence", "expiry or replacement"]
     }
   ]
 }
