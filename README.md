@@ -26,9 +26,9 @@ The current answer is incomplete. Useful observability already exists inside mos
 4. **No indiscriminate telemetry sharing.** Cross-domain observability must respect privacy, sovereignty, commercial sensitivity, and per-recipient disclosure policy.
 5. **Useful evidence beats one giant dashboard.** The objective is a defensible causal timeline, not central ownership of every participant's telemetry.
 
-## Pilot status
+## Project status
 
-This is a 2–3 week pilot. The initial source baseline was checked on **2026-08-13**. During the pilot, weekly scans should produce a draft pull request only when there is a material change.
+This is a public, ongoing reference project. The initial source baseline was checked on **2026-08-13**. Weekly scans propose draft pull requests when they identify material changes. A human reviewer decides which changes to merge.
 
 The project is maintained through KajTech by Kaj Kjellgren. It is an independent working project and **not an official DE-CIX standard, product, or commitment**.
 
@@ -36,6 +36,6 @@ The project is maintained through KajTech by Kaj Kjellgren. It is an independent
 
 Corrections and additions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request. Every factual change must include an authoritative source and an explicit maturity classification.
 
-## License during the pilot
+## License
 
-No reuse licence has been selected yet. See [LICENSE.md](LICENSE.md). A public content and code licence should be chosen before the repository is promoted through a conference QR code.
+No reuse licence has been selected yet. See [LICENSE.md](LICENSE.md) for the current terms.
