@@ -49,6 +49,7 @@ PRIMARY_HOSTS = {
     "docs.nvidia.com",
     "datatracker.ietf.org",
     "modelcontextprotocol.io",
+    "www.ntop.org",
 }
 
 
