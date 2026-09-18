@@ -62,4 +62,4 @@ Every factual pull request must state:
 
 ## Baseline and scan cadence
 
-The initial baseline date is **2026-08-13**. During the pilot, the watchlist is checked weekly for three runs. If the workflow produces noisy or weak proposals, refine the prompt and catalogue before continuing the schedule.
+The initial baseline date is **2026-08-13**. The watchlist is reviewed weekly. If the workflow produces noisy or weak proposals, refine the prompt and catalogue before continuing the schedule.

@@ -2,6 +2,11 @@
 
 Material changes to the landscape and catalogue are recorded here. Routine scans that find no substantive change do not create commits.
 
+## Unreleased
+
+- Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
+- Added full licence texts, scope and attribution guidance, and matching contribution terms.
+
 ## 0.6.0 — 2026-09-10
 
 - Added an implementation note covering the ntop observability stack: nProbe for flow collection/normalisation, ntopng for traffic analytics and higher-resolution time series, and nDPI for application/protocol enrichment.

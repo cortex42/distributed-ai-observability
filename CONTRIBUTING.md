@@ -2,6 +2,12 @@
 
 Thank you for helping improve the Distributed AI Observability Landscape.
 
+## Licensing of contributions
+
+By submitting a contribution, you agree to license your original contribution under the licence applicable to that part of the repository, as described in [LICENSE.md](LICENSE.md): [CC BY 4.0](LICENSES/CC-BY-4.0.txt) for documentation and catalogue content, and [MIT](LICENSES/MIT.txt) for software, configuration and source-code examples. You retain copyright in your contribution.
+
+Submit only material you have the right to contribute under those terms. Identify any third-party material, its source and its applicable licence so reviewers can assess compatibility.
+
 ## Before proposing a change
 
 1. Check whether the item already exists in `catalog/protocols.json`.

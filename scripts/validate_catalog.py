@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Kaj Kjellgren / KajTech
 """Validate the catalogue, watchlist, and local Markdown links using stdlib only."""
 
 from __future__ import annotations
