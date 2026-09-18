@@ -7,6 +7,12 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 - Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
 - Added full licence texts, scope and attribution guidance, and matching contribution terms.
 
+## 0.6.0 — 2026-09-10
+
+- Added an implementation note covering the ntop observability stack: nProbe for flow collection/normalisation, ntopng for traffic analytics and higher-resolution time series, and nDPI for application/protocol enrichment.
+- Recorded ntop as mature production evidence for network-local observability while explicitly retaining the cross-domain gap: flow/application evidence does not by itself correlate to AI tasks, model queues, agent operations, retries, or user-visible outcomes.
+- Added `www.ntop.org` to the authoritative-source allowlist so future ntop documentation can be tracked through the repository validation process.
+- Documented a possible FOX participant-gateway pattern in which raw packet/flow/DPI data remains local and only authorised derived evidence is exported.
 ## 0.6.0 — 2026-09-14
 
 - Added the IETF OPSAWG Data Manifest `-15`, which entered IETF Last Call for Proposed Standard and preserves platform, schema, subscription, and actual collection-period context for YANG telemetry.
