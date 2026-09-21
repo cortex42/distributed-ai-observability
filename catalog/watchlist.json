@@ -49,7 +49,7 @@
       "organisation": "Model Context Protocol",
       "url": "https://modelcontextprotocol.io/specification/2026-07-28/changelog",
       "tracks": ["mcp-trace-context"],
-      "check_for": ["release-candidate transition", "trace context semantic change", "incompatible protocol change", "deprecation"]
+      "check_for": ["new specification release", "trace context semantic change", "incompatible protocol change", "deprecation"]
     },
     {
       "id": "mcp-sep-414",
@@ -112,7 +112,7 @@
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/active/",
       "tracks": ["bmp", "on-path-telemetry-yang", "cats-framework", "cats-oam-framework", "cats-oam-usecases", "quality-of-outcome", "distributed-inference-transport"],
-      "check_for": ["new revisions", "replacement or expiry", "working-group adoption", "IESG or RFC transition", "new AI inference observability work"]
+      "check_for": ["new revisions", "replacement or expiry", "working-group adoption", "IESG or RFC transition", "new AI inference observability work", "new retry, audit, statistics, or path-evidence work"]
     },
     {
       "id": "ietf-network-telemetry-framework",
@@ -239,6 +239,55 @@
       "url": "https://datatracker.ietf.org/doc/draft-arsentev-agent-run-metrics/",
       "tracks": ["agent-run-metrics"],
       "check_for": ["revision", "working-group adoption", "run or delegation semantic change", "trace binding", "privacy or security change", "implementation evidence", "expiry or replacement"]
+    },
+    {
+      "id": "otel-genai-changelog",
+      "organisation": "OpenTelemetry",
+      "url": "https://github.com/open-telemetry/semantic-conventions-genai/tree/main/changelog.d",
+      "tracks": ["otel-semconv-genai"],
+      "check_for": ["breaking unreleased semantics", "correlation and sampling requirements", "cache and per-modality usage", "reference implementation scope"]
+    },
+    {
+      "id": "mcp-specification-versioning",
+      "organisation": "Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/specification/versioning",
+      "tracks": ["mcp-trace-context"],
+      "check_for": ["current published specification", "draft or release transition", "version compatibility"]
+    },
+    {
+      "id": "vllm-releases",
+      "organisation": "vLLM",
+      "url": "https://github.com/vllm-project/vllm/releases",
+      "tracks": ["vllm-observability"],
+      "check_for": ["tagged release", "main-only metrics reaching stable", "metric or API compatibility", "documented overhead"]
+    },
+    {
+      "id": "ietf-bmp-statistics-information",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-ietf-grow-bmp-stats-informational-tlv/",
+      "tracks": ["bmp-statistics-information", "bmp"],
+      "check_for": ["revision", "wire-format compatibility", "collection and percentile semantics", "implementation evidence", "publication transition"]
+    },
+    {
+      "id": "ietf-stamp-reflected-headers",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-ietf-ippm-stamp-ext-hdr/",
+      "tracks": ["stamp-reflected-headers", "stamp", "ioam"],
+      "check_for": ["revision", "header-selection and reflection semantics", "data-plane requirements", "security and disclosure", "current-revision implementation", "publication transition"]
+    },
+    {
+      "id": "ietf-agent-operation-continuity",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-schrock-agent-operation-continuity/",
+      "tracks": ["agent-operation-continuity"],
+      "check_for": ["revision", "working-group adoption", "retry and replacement semantics", "provider evidence and uncertainty", "live or independent implementation evidence", "privacy and security", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-agent-accountability-architecture",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-sato-agent-accountability-refarch/",
+      "tracks": ["agent-accountability-architecture"],
+      "check_for": ["revision", "working-group adoption", "disclosure and correlation mechanisms", "principal binding and completeness", "erasure and privacy", "implementation evidence", "expiry or replacement"]
     }
   ]
 }
