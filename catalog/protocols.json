@@ -88,12 +88,12 @@
       "domain": "inference",
       "type": "semantic-conventions",
       "maturity": "experimental",
-      "version": "Unreleased separate repository",
-      "status_notes": "Moved out of the core semantic-conventions repository in 2026; no release was present at the baseline check.",
-      "evidence": ["GenAI client spans", "model metrics", "events", "tool calls", "MCP operations", "provider-specific attributes"],
-      "relevance": "The most directly relevant emerging vocabulary for correlating agent, model, tool, and provider activity.",
-      "limitations": "Fast-moving, unversioned at baseline, and not yet a stable cross-provider contract.",
-      "last_checked": "2026-08-13",
+      "version": "Unreleased main; semantic changes through 2026-09-16",
+      "status_notes": "Still unreleased. Main now adds conversation ID to execute_tool spans when available (2026-09-16) and sampling-relevant agent names to execute_tool/plan spans (2026-09-10). Earlier changes rename cache-creation usage to cache-write usage, add per-modality token usage, remove cache usage from internal invoke_agent spans, and deprecate per-message finish_reason in favour of gen_ai.response.finish_reasons.",
+      "evidence": ["GenAI client spans", "model metrics", "tool and MCP operations", "conversation ID on tool spans", "sampling-relevant agent name", "per-modality token usage", "cache-read and cache-write usage", "response finish reasons"],
+      "relevance": "Improves tool-to-conversation correlation and early sampling decisions while changing how collectors must interpret token, cache, and completion evidence.",
+      "limitations": "Experimental main, not a versioned release or stable cross-provider contract. Cache usage belongs on inference client spans rather than cross-model agent aggregates. Do not fabricate a conversation ID when none exists; real IDs require scope, disclosure, and retention controls. Sampling attributes do not guarantee coordinated incident retention.",
+      "last_checked": "2026-09-21",
       "primary_sources": [
         {
           "title": "OpenTelemetry GenAI Semantic Conventions repository",
@@ -102,6 +102,26 @@
         {
           "title": "OpenTelemetry GenAI Semantic Conventions releases",
           "url": "https://github.com/open-telemetry/semantic-conventions-genai/releases"
+        },
+        {
+          "title": "Tool conversation IDs, 2026-09-16",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/be23fcc250f72e6f740c96d05fa6f12fbee3d71a"
+        },
+        {
+          "title": "Sampling-relevant agent names, 2026-09-10",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/b06f7a2c840ceeacd8478acd3443e697ce390f96"
+        },
+        {
+          "title": "Cache-write rename and per-modality usage, 2026-08-20",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/8a3767d6c5d09bc0917722720973c0c44182d960"
+        },
+        {
+          "title": "Remove cache usage from internal invoke_agent spans, 2026-08-27",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/5f5ae69e52464c56eea4389fb793c2690caaea78"
+        },
+        {
+          "title": "Deprecate per-message finish reason, 2026-09-01",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/5ca9052bc796ef1e497200b1d558fd87a201f335"
         }
       ]
     },
@@ -110,13 +130,13 @@
       "name": "Model Context Protocol trace context propagation",
       "domain": "task-context",
       "type": "protocol-feature",
-      "maturity": "candidate",
-      "version": "2026-07-28 specification release candidate; SEP-414 Final",
-      "status_notes": "The MCP release candidate documents W3C trace context and baggage in JSON-RPC `_meta`. SEP-414 is Final in the MCP process, and official SDK documentation describes shipping propagation and span instrumentation.",
+      "maturity": "standard",
+      "version": "Published 2026-07-28 specification; SEP-414 Final",
+      "status_notes": "The MCP project released the 2026-07-28 specification on 2026-07-28, and its versioning page identifies that version as current and ready for use. This corrects the catalogue's release-candidate label, not a September release. SEP-414 remains Final and documents W3C trace context and baggage in JSON-RPC `_meta`; official SDK documentation describes propagation and spans.",
       "evidence": ["traceparent", "tracestate", "baggage", "MCP method", "protocol version", "tool and prompt names"],
       "relevance": "Provides a protocol-defined carrier for following agent-to-tool requests across MCP clients, servers, and gateways, directly reducing a documented task-correlation gap.",
-      "limitations": "The 2026-07-28 specification is a release candidate, not an IETF or W3C standard; SEP-414 documents conventions rather than requiring every implementation to emit or propagate them, SDK coverage varies, and correlation metadata still needs trust-boundary and data-minimisation policy.",
-      "last_checked": "2026-08-17",
+      "limitations": "Published MCP project specification, not an IETF or W3C standard. SEP-414 defines conventions without requiring every implementation to propagate or emit them; SDK coverage and API stability vary. Correlation metadata still needs trust-boundary and data-minimisation policy.",
+      "last_checked": "2026-09-21",
       "primary_sources": [
         {
           "title": "MCP 2026-07-28 specification changelog",
@@ -129,6 +149,14 @@
         {
           "title": "MCP Python SDK OpenTelemetry documentation",
           "url": "https://github.com/modelcontextprotocol/python-sdk/blob/main/docs/run/opentelemetry.md"
+        },
+        {
+          "title": "MCP specification versioning and current version",
+          "url": "https://modelcontextprotocol.io/specification/versioning"
+        },
+        {
+          "title": "Official MCP release announcement, published 2026-07-28",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/7c046ffbbce305afb84842439f5694f46da797c6/blog/content/posts/2026-07-28-spec-ga/index.md"
         }
       ]
     },
@@ -176,12 +204,12 @@
       "domain": "inference",
       "type": "implementation",
       "maturity": "implementation",
-      "version": "Rolling stable/latest documentation",
-      "status_notes": "Exposes Prometheus metrics, OpenTelemetry tracing, optional per-request timing metrics, and experimental opt-in per-request speculative-decoding acceptance metrics documented on 2026-08-20.",
-      "evidence": ["queue time", "time to first token", "generation time", "inter-token latency", "token rate", "model forward time", "model execute time", "speculative-decoding acceptance length", "draft acceptance rate", "accepted-draft distribution"],
+      "version": "v0.29.0 stable; additional per-request metrics support on main",
+      "status_notes": "Latest stable v0.29.0 was released 2026-09-09. Main added per-request timing metrics to /v1/responses on 2026-09-16, after that release, and clarified streamed-event inter-token latency versus per-request time-per-output-token on 2026-09-15. Existing Prometheus metrics, OpenTelemetry tracing, and experimental opt-in speculative-decoding acceptance metrics remain.",
+      "evidence": ["queue time", "time to first token", "generation time", "streamed-event inter-token latency", "request time per output token", "token rate", "model forward time", "model execute time", "Responses API per-request timing on main", "speculative-decoding acceptance length", "draft acceptance rate", "accepted-draft distribution"],
       "relevance": "Separates inference-side queue, execution, streaming, and speculative-decoding behaviour that otherwise appears as one network-visible request time.",
-      "limitations": "Signals and overhead depend on configuration; speculative-decoding fields are experimental, disabled by default, limited to single-sequence requests, and may change shape. Streaming delivery requires usage reporting, and implementation support does not create a provider-neutral exchange contract.",
-      "last_checked": "2026-08-24",
+      "limitations": "Responses support is merged main, not in v0.29.0: metrics arrive on the non-streaming response or final response.completed event and are suppressed for multi-generation tool turns. Per-request timing requires --enable-per-request-metrics and enabled statistics, with possible CPU overhead. Chat/completions streaming needs usage reporting. Speculative acceptance fields remain experimental, opt-in, and single-sequence. Output events may contain multiple tokens, so inter-token latency and per-request TPOT have different weighting. Request timings and cache behaviour can expose workload characteristics and require access and disclosure controls; support is not a provider-neutral contract.",
+      "last_checked": "2026-09-21",
       "primary_sources": [
         {
           "title": "vLLM metrics and OpenTelemetry tracing",
@@ -194,6 +222,18 @@
         {
           "title": "vLLM per-request speculative decoding acceptance metrics",
           "url": "https://docs.vllm.ai/en/latest/features/speculative_decoding/acceptance_metrics/"
+        },
+        {
+          "title": "vLLM v0.29.0 release, 2026-09-09",
+          "url": "https://github.com/vllm-project/vllm/releases/tag/v0.29.0"
+        },
+        {
+          "title": "Responses API per-request metrics merged on main, 2026-09-16",
+          "url": "https://github.com/vllm-project/vllm/commit/fbf2c5e8be9754f31c4e0f549189fc9f3bdd213c"
+        },
+        {
+          "title": "Inter-token latency and TPOT semantics, 2026-09-15",
+          "url": "https://github.com/vllm-project/vllm/commit/79e205e8cdf7864b8b9f2d23c908b887f2f5badb"
         }
       ]
     },
@@ -567,6 +607,86 @@
         {
           "title": "Agent Run Metrics: A JSON Interchange Format for Resource Accounting of Language-Model Agent Runs",
           "url": "https://datatracker.ietf.org/doc/draft-arsentev-agent-run-metrics/"
+        }
+      ]
+    },
+    {
+      "id": "bmp-statistics-information",
+      "name": "BMP Statistics Information TLV",
+      "domain": "flow-routing",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-ietf-grow-bmp-stats-informational-tlv-01",
+      "status_notes": "IETF GROW working-group draft revised 2026-09-11. Revision -01 changes the proposed wire layout with measurement-window duration, sample count, and microsecond-resolution extrema timestamps; it adds percentile entries and constrains interpretation to gauge statistics.",
+      "evidence": ["measurement window", "sample count", "minimum and maximum with timestamps", "snapshot, mean, median, and percentile statistics"],
+      "relevance": "Can preserve short routing-state excursions between exports and make statistical comparison assumptions explicit.",
+      "limitations": "Not an RFC; incompatible draft wire changes and no implementation evidence found. Comparisons require compatible collection settings; the draft does not export collection methodology or mandate a percentile algorithm. Unsigned exporter assertions and sensitive router dynamics require integrity, access, and disclosure controls.",
+      "last_checked": "2026-09-21",
+      "primary_sources": [
+        {
+          "title": "BMP Statistics Information TLV, revision -01 dated 2026-09-11",
+          "url": "https://datatracker.ietf.org/doc/draft-ietf-grow-bmp-stats-informational-tlv/"
+        }
+      ]
+    },
+    {
+      "id": "stamp-reflected-headers",
+      "name": "STAMP IP and IPv6 Extension Header Reflection",
+      "domain": "path-measurement",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-ietf-ippm-stamp-ext-hdr-14",
+      "status_notes": "IETF IPPM working-group draft revised 2026-09-18. Revision -14 requires received headers to reach the measurement endpoints and makes header selection, no-match reporting, reverse-direction construction, and MTU accounting more explicit.",
+      "evidence": ["reflected IP and IPv6 extension headers", "IOAM carried in reflected headers", "header-selection conformance flags", "reverse-direction header observations"],
+      "relevance": "Connects active probes with selected on-path header evidence while clarifying interoperability requirements.",
+      "limitations": "Not an RFC or proof of transaction causality. The draft cites Teaparty implementation, but its linked 2025-06-09 commit targets revision -04; -14 conformance is not established. Limited-domain use, header disclosure, reflection amplification, data-plane access, and MTU constraints remain deployment concerns.",
+      "last_checked": "2026-09-21",
+      "primary_sources": [
+        {
+          "title": "STAMP IP and IPv6 Extension Header Reflection, revision -14 dated 2026-09-18",
+          "url": "https://datatracker.ietf.org/doc/draft-ietf-ippm-stamp-ext-hdr/"
+        },
+        {
+          "title": "Teaparty initial reflected-header implementation targeting -04, 2025-06-09",
+          "url": "https://github.com/cerfcast/teaparty/commit/393abf9357a6c2439877d9bcf2dc426dd89c7158"
+        }
+      ]
+    },
+    {
+      "id": "agent-operation-continuity",
+      "name": "Agent Operation Continuity Across Executor Replacement",
+      "domain": "task-context",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-schrock-agent-operation-continuity-00",
+      "status_notes": "Individual Internet-Draft published 2026-09-15 with no formal IETF standing. It proposes continuity requirements for operation identity, immutable provider bindings, attempt evidence, unresolved outcomes, and stale-executor fencing.",
+      "evidence": ["operation-occurrence identity", "provider request binding", "append-only attempt history", "unresolved outcome state", "executor generation"],
+      "relevance": "Addresses evidence loss and unsafe reinterpretation when an agent executor fails or is replaced.",
+      "limitations": "One authoritative coordination domain only; no universal identifier, evidence format, or cross-domain ledger migration. The draft reports same-team local and synthetic-provider testing, not live-provider deployment or independent interoperability. Provider assertions do not prove outcomes; persistent identifiers and request digests need minimisation, access, and retention controls.",
+      "last_checked": "2026-09-21",
+      "primary_sources": [
+        {
+          "title": "Agent Operation Continuity Across Executor Replacement, 2026-09-15",
+          "url": "https://datatracker.ietf.org/doc/draft-schrock-agent-operation-continuity/"
+        }
+      ]
+    },
+    {
+      "id": "agent-accountability-architecture",
+      "name": "AI Audit Reference Architecture for Post-Hoc Agent Accountability",
+      "domain": "task-context",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-sato-agent-accountability-refarch-00",
+      "status_notes": "Individual Internet-Draft recorded 2026-09-15 with a 2026-09-16 document date; it has no formal IETF standing. It proposes separate record production, cryptographic log anchoring, scoped disclosure, and third-party verification for agent activity.",
+      "evidence": ["dispatch versus observed effect", "signed log commitments", "cross-principal correlation", "disclosure-scoped audit records"],
+      "relevance": "Addresses the trust, integrity, and recipient-disclosure gaps in post-hoc cross-organisational evidence.",
+      "limitations": "Reference architecture, not a deployed exchange protocol or real-time authorisation mechanism; no implementation or interoperability evidence found. Principal enrolment, metadata leakage, erasure, and ordering examples remain unresolved. Signatures alone cannot establish completeness or outcome truth.",
+      "last_checked": "2026-09-21",
+      "primary_sources": [
+        {
+          "title": "AI Audit Reference Architecture for Post-Hoc Agent Accountability, document dated 2026-09-16",
+          "url": "https://datatracker.ietf.org/doc/draft-sato-agent-accountability-refarch/"
         }
       ]
     },

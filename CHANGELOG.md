@@ -7,6 +7,15 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 - Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
 - Added full licence texts, scope and attribution guidance, and matching contribution terms.
 
+## 0.7.0 — 2026-09-21
+
+- Recorded unreleased OpenTelemetry GenAI changes to tool-conversation correlation, sampling-relevant agent names, token/cache usage, and finish reasons, including breaking changes since its stored baseline.
+- Added vLLM Responses API per-request timing support merged on 16 September, explicitly distinguished from stable v0.29.0, and clarified streamed-event latency versus per-request TPOT.
+- Corrected MCP's release-candidate maturity to the published 2026-07-28 project specification using its July release announcement and current-version guidance; this is a baseline correction, not a September release or IETF/W3C standard.
+- Added GROW BMP statistics `-01` (11 September) and IPPM STAMP reflected-header `-14` (18 September), with wire/measurement semantics and implementation caveats kept separate from the base RFCs.
+- Added individual Agent Operation Continuity and AI Audit Reference Architecture drafts for failover evidence and scoped post-hoc audit. Neither has formal IETF standing or established cross-provider interoperability.
+- Refined the vocabulary, sampling, retry, cache, and audit gaps and added seven authoritative monitoring sources. FOX remains an unchanged working hypothesis.
+
 ## 0.6.0 — 2026-09-10
 
 - Added an implementation note covering the ntop observability stack: nProbe for flow collection/normalisation, ntopng for traffic analytics and higher-resolution time series, and nDPI for application/protocol enrichment.
