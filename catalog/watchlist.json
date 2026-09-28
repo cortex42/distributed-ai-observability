@@ -111,7 +111,7 @@
       "id": "ietf-active-drafts",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/active/",
-      "tracks": ["bmp", "on-path-telemetry-yang", "cats-framework", "cats-oam-framework", "cats-oam-usecases", "quality-of-outcome", "distributed-inference-transport"],
+      "tracks": ["bmp", "on-path-telemetry-yang", "cats-framework", "cats-data-model", "cats-oam-framework", "cats-oam-usecases", "quality-of-outcome", "distributed-inference-transport", "agent-audit-record"],
       "check_for": ["new revisions", "replacement or expiry", "working-group adoption", "IESG or RFC transition", "new AI inference observability work", "new retry, audit, statistics, or path-evidence work"]
     },
     {
@@ -288,6 +288,27 @@
       "url": "https://datatracker.ietf.org/doc/draft-sato-agent-accountability-refarch/",
       "tracks": ["agent-accountability-architecture"],
       "check_for": ["revision", "working-group adoption", "disclosure and correlation mechanisms", "principal binding and completeness", "erasure and privacy", "implementation evidence", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-cats-data-model",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-ietf-cats-data-model/",
+      "tracks": ["cats-data-model", "cats-framework"],
+      "check_for": ["revision", "working-group status", "YANG model or service-instance identity change", "metric and notification semantics", "implementation evidence", "publication transition"]
+    },
+    {
+      "id": "ietf-agent-audit-record",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-gilda-wimse-agent-audit-record/",
+      "tracks": ["agent-audit-record"],
+      "check_for": ["revision", "working-group adoption", "record, canonicalization, or verification semantics", "decision and observed-effect mapping", "security, privacy, or IPR change", "implementation or interoperability evidence", "expiry or replacement"]
+    },
+    {
+      "id": "agent-audit-record-vectors",
+      "organisation": "Probity AI",
+      "url": "https://github.com/probityai/agent-evidence-vectors/blob/main/spec/predicates/REGISTRY.md",
+      "tracks": ["agent-audit-record"],
+      "check_for": ["publication of the draft's conformance vectors", "reference verifier support", "independent implementation result", "predicate URI or status change"]
     }
   ]
 }
