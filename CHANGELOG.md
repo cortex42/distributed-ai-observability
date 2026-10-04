@@ -7,6 +7,16 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 - Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
 - Added full licence texts, scope and attribution guidance, and matching contribution terms.
 
+## 0.8.0 — 2026-09-28
+
+- Recorded OpenTelemetry GenAI's unreleased 22 September breaking replacement of the token-usage histogram with aggregate usage counters and separate per-operation token distributions; maturity remains experimental.
+- Updated vLLM to the 22 September v0.30.0 release, including shipped latency semantics and HiSparse cache/transfer counters, while retaining the Responses API timing change as main-only implementation work.
+- Added the CATS working-group YANG data-model `-00` for service-instance mapping, operational counters and notifications; it is a draft, not an RFC or cross-domain task-correlation mechanism.
+- Recorded the OPSAWG Data Manifest's 26 September transition from IETF Last Call to Waiting for AD Go-Ahead, with IANA expert review still outstanding; candidate maturity is unchanged.
+- Updated the individual AI Audit Reference Architecture from `-00` to the substantively expanded `-01`, including new audience, liveness, producer-failure, effect-observation and verification semantics plus explicit unresolved completeness/security gaps.
+- Added the individual agent-authorization audit-record `-01` as a concrete canonical signed decision/effect format. It has no formal IETF standing, published implementation, or published conformance corpus.
+- Expanded the topology, vocabulary, cache-state and audit gaps, and added three authoritative monitoring sources. FOX remains an unchanged working hypothesis.
+
 ## 0.7.0 — 2026-09-21
 
 - Recorded unreleased OpenTelemetry GenAI changes to tool-conversation correlation, sampling-relevant agent names, token/cache usage, and finish reasons, including breaking changes since its stored baseline.
