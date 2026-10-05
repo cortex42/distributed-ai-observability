@@ -309,6 +309,27 @@
       "url": "https://github.com/probityai/agent-evidence-vectors/blob/main/spec/predicates/REGISTRY.md",
       "tracks": ["agent-audit-record"],
       "check_for": ["publication of the draft's conformance vectors", "reference verifier support", "independent implementation result", "predicate URI or status change"]
+    },
+    {
+      "id": "ietf-agent-action-capsule-otel",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-palanisamy-scitt-aac-otel/",
+      "tracks": ["agent-action-capsule-otel"],
+      "check_for": ["revision or expiry", "working-group adoption or formal status", "base-profile alignment and payload placement", "OpenTelemetry registry acceptance", "privacy or security change", "implementation or interoperability evidence", "conformance-registry status"]
+    },
+    {
+      "id": "agent-action-capsule-emitter",
+      "organisation": "Action State Group",
+      "url": "https://github.com/action-state-group/capsule-emit",
+      "tracks": ["agent-action-capsule-otel"],
+      "check_for": ["tagged release", "OpenTelemetry exporter behavior", "clear-versus-digest identifier policy", "conformance result", "independent deployment or interoperability evidence"]
+    },
+    {
+      "id": "agent-evidence-vector-releases",
+      "organisation": "Probity AI",
+      "url": "https://github.com/probityai/agent-evidence-vectors/releases",
+      "tracks": ["agent-audit-record"],
+      "check_for": ["new tagged audit-record corpus", "vector or verdict compatibility change", "reference-verifier change", "signed digest or packaging change", "support for a published draft revision"]
     }
   ]
 }

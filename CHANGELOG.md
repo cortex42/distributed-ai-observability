@@ -7,6 +7,17 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 - Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
 - Added full licence texts, scope and attribution guidance, and matching contribution terms.
 
+## 0.9.0 — 2026-10-05
+
+- Recorded unreleased OpenTelemetry GenAI additions for agent-skill lifecycle spans and the stable-ID `gen_ai.main_agent` entity; maturity remains experimental and the new fields are development status.
+- Updated MCP implementation evidence to Python SDK v2.3.0, which records peer JSON-RPC errors on client spans; MCP project-specification maturity remains unchanged.
+- Updated vLLM to v0.31.0, where Responses API per-request timing is now tagged, and recorded additional cache, connector, offload, residency, and logging signals.
+- Promoted STAMP reflected headers from `draft` to `candidate` after revision `-15` entered IETF Last Call for Proposed Standard; it is not yet an RFC.
+- Recorded the OPSAWG Data Manifest's transition to Waiting for AD Go-Ahead::Revised I-D Needed while its candidate maturity remains unchanged.
+- Updated the individual agent-audit-record entry with the published 47-vector corpus, Go/Python reference verifiers, signed digests, and the v0.16.0 indeterminate-verdict compatibility change.
+- Added the individual OpenTelemetry correlation extension for Agent Action Capsules as a draft gap-filler for joining trace context to sealed action evidence, with explicit same-producer, disclosure, base-profile, and implementation caveats.
+- Added three monitoring sources and refined the correlation, disclosure, cache-state, vocabulary, and audit gaps. FOX remains an unchanged working hypothesis.
+
 ## 0.8.0 — 2026-09-28
 
 - Recorded OpenTelemetry GenAI's unreleased 22 September breaking replacement of the token-usage histogram with aggregate usage counters and separate per-operation token distributions; maturity remains experimental.
