@@ -7,6 +7,20 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 - Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
 - Added full licence texts, scope and attribution guidance, and matching contribution terms.
 
+## 0.10.0 — 2026-10-12
+
+- Reclassified the CATS framework from a candidate Internet-Draft to the published Informational RFC 10053 framework and added Informational RFC 10054 for the CATS problem, distributed-inference use case, affinity, metric-agreement, and confidentiality requirements.
+- Added the individual CATS agent-state-affinity `-00` draft as a gap-filler for state locality, lifetime, reuse, retrieval-versus-recompute cost, and compute readiness; it has no formal IETF standing, wire format, implementation, or interoperability evidence.
+- Recorded unreleased OpenTelemetry GenAI metric namespace changes, failed-operation usage semantics, and promotion of the input/output-bearing inference-details event to recommended; maturity remains experimental.
+- Recorded main-only vLLM cache-source tiers and opt-in HiSparse host-block lifecycle histograms after v0.31.0; these are untagged implementation signals, not stable protocol semantics.
+- Updated the On-Path Telemetry YANG work to `-07`, which splits the former combined module into separate AltMark and IOAM telemetry modules and namespaces.
+- Updated the OPSAWG Data Manifest to `-16` in IESG Evaluation and STAMP reflected headers to `-16` during IETF Last Call; both retain candidate maturity and are not RFCs.
+- Updated Agent Run Metrics to individual draft `-01`, including its JSON/JSON-seq and extension changes and its lack of a conforming report emitter.
+- Updated the individual agent-audit-record to incompatible revision `-02` and the companion implementation evidence to the 55-vector v0.17.7 corpus with evaluation, oversight, and signed-record-digest semantics.
+- Recorded capsule-emit v0.9.0 and untagged main support for generic companion-defined top-level members; this narrows but does not resolve the Agent Action Capsule OpenTelemetry placement and validation gap.
+- Added individual local-tool-call-proof `-01` and agent-rule-provenance `-00` drafts as authorization and audit gap-fillers. Neither has formal IETF standing or independent implementation evidence.
+- Added five monitoring sources and refined the correlation, vocabulary, topology, disclosure, state-affinity, and audit gaps. FOX remains an unchanged working hypothesis.
+
 ## 0.9.0 — 2026-10-05
 
 - Recorded unreleased OpenTelemetry GenAI additions for agent-skill lifecycle spans and the stable-ID `gen_ai.main_agent` entity; maturity remains experimental and the new fields are development status.
