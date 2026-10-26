@@ -7,6 +7,17 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 - Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
 - Added full licence texts, scope and attribution guidance, and matching contribution terms.
 
+## 0.11.0 — 2026-10-26
+
+- Recorded unreleased OpenTelemetry GenAI changes through 26 October: provider-supplied tool-call IDs, clarified MCP error and session dimensions, positive-only inference usage counters, and dedicated embedding metrics. Maturity remains experimental.
+- Updated vLLM to the 18 October v0.32.0 release, which ships cache-source and HiSparse lifecycle metrics and adds KV-fetch-stage, admission, watermark, histogram, logging, and profiling controls. Maturity remains implementation.
+- Updated STAMP reflected headers from `-16` to `-25` in IESG Evaluation::AD Followup, including header-processing, session-notification, rate-limiting, MTU, and security refinements. It remains a candidate, not an RFC.
+- Recorded the OPSAWG Data Manifest's move to IESG Evaluation::AD Followup with four DISCUSS positions, IANA work, and clean automated YANG validation. Candidate maturity is unchanged.
+- Replaced the archived `draft-gilda-wimse-agent-audit-record-02` baseline with `draft-gilda-audit-agent-audit-record-00` and the incompatible 111-case v0.26.0 corpus, including evaluation-input freshness, anchoring, migration, and IPR caveats.
+- Recorded capsule-emit Python v0.13.0 plus current TypeScript and Rust releases, while distinguishing improved base-capsule deployability from validation of the unchanged OpenTelemetry extension draft.
+- Added individual AER-1 execution-receipt `-26`, Agent Execution Evidence `-00`, and agent evidence-binding `-00` drafts as gap-fillers for tool receipts, every-call evidence, admission, credential binding, and cross-operator verification. None has formal IETF standing or independently verified cross-provider interoperability.
+- Added three monitoring sources and refined the correlation, vocabulary, disclosure, retry, state-affinity, and audit gaps. FOX remains an unchanged working hypothesis.
+
 ## 0.10.0 — 2026-10-12
 
 - Reclassified the CATS framework from a candidate Internet-Draft to the published Informational RFC 10053 framework and added Informational RFC 10054 for the CATS problem, distributed-inference use case, affinity, metric-agreement, and confidentiality requirements.

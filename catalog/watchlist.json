@@ -111,7 +111,7 @@
       "id": "ietf-active-drafts",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/active/",
-      "tracks": ["bmp", "on-path-telemetry-yang", "cats-framework", "cats-requirements", "cats-agent-state-affinity", "cats-data-model", "cats-oam-framework", "cats-oam-usecases", "quality-of-outcome", "distributed-inference-transport", "agent-audit-record", "local-tool-call-proof", "agent-rule-provenance"],
+      "tracks": ["bmp", "on-path-telemetry-yang", "cats-framework", "cats-requirements", "cats-agent-state-affinity", "cats-data-model", "cats-oam-framework", "cats-oam-usecases", "quality-of-outcome", "distributed-inference-transport", "agent-audit-record", "local-tool-call-proof", "agent-rule-provenance", "aer1-execution-receipt", "agent-execution-evidence", "agent-evidence-binding"],
       "check_for": ["new revisions", "replacement or expiry", "working-group adoption", "IESG or RFC transition", "new AI inference observability work", "new retry, audit, statistics, or path-evidence work"]
     },
     {
@@ -320,7 +320,7 @@
     {
       "id": "ietf-agent-audit-record",
       "organisation": "IETF",
-      "url": "https://datatracker.ietf.org/doc/draft-gilda-wimse-agent-audit-record/",
+      "url": "https://datatracker.ietf.org/doc/draft-gilda-audit-agent-audit-record/",
       "tracks": ["agent-audit-record"],
       "check_for": ["revision", "working-group adoption", "record, canonicalization, or verification semantics", "decision and observed-effect mapping", "security, privacy, or IPR change", "implementation or interoperability evidence", "expiry or replacement"]
     },
@@ -365,6 +365,27 @@
       "url": "https://datatracker.ietf.org/doc/draft-piehl-agent-rule-provenance/",
       "tracks": ["agent-rule-provenance"],
       "check_for": ["revision", "working-group adoption", "provenance schema or recorder semantics", "implementation or independent verification", "security or privacy change", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-aer1-execution-receipt",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-zambo-aer1/",
+      "tracks": ["aer1-execution-receipt"],
+      "check_for": ["revision", "working-group adoption", "receipt or workflow-chain semantic change", "independent deployment or interoperability evidence", "conformance-kit change", "privacy or security change", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-agent-execution-evidence",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-thaha-scitt-agent-execution-evidence/",
+      "tracks": ["agent-execution-evidence"],
+      "check_for": ["revision", "working-group adoption", "SCITT profile or chain semantic change", "conforming implementation", "independent interoperability evidence", "licensing or security change", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-agent-evidence-binding",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-thaha-wimse-agent-evidence-binding/",
+      "tracks": ["agent-evidence-binding"],
+      "check_for": ["revision", "working-group adoption", "credential claim or HTTP binding change", "implementation or interoperability evidence", "privacy or security change", "expiry or replacement"]
     }
   ]
 }

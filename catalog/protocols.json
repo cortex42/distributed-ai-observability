@@ -88,12 +88,12 @@
       "domain": "inference",
       "type": "semantic-conventions",
       "maturity": "experimental",
-      "version": "Unreleased main; semantic changes through 2026-10-09",
-      "status_notes": "Still unreleased. On 2026-10-06 main renamed inference-client duration and streaming metrics from gen_ai.client.operation.* to gen_ai.client.inference.* and reserved the generic operation duration for non-inference operations. On 2026-10-09 main required token counters and per-operation histograms for every inference operation, including failed operations, and promoted the input/output-bearing gen_ai.client.inference.operation.details event from opt-in to recommended. Earlier main changes added development skill and stable main-agent semantics, conversation and sampling correlation, and a breaking token-metric redesign.",
-      "evidence": ["GenAI client spans", "inference duration, time-to-first-chunk, and output-chunk timing", "tool and MCP operations", "conversation ID on tool spans", "sampling-relevant agent name", "stable main-agent entity and internal-span associations", "agent-skill name, source, resource, and script attributes", "aggregate inference token counters", "per-operation token histograms", "failed-operation usage and error-labelled histograms", "per-modality token usage", "cache-read, cache-write, and reasoning token subsets", "response finish reasons", "recommended inference input and output details event"],
-      "relevance": "Improves persistent-agent, skill-lifecycle, tool-to-conversation, sampling, failure-cost, latency, and payload correlation while separating aggregate token spend/rate evidence from per-operation distributions.",
-      "limitations": "Experimental unreleased main, not a versioned release or stable cross-provider contract. The 2026-10-06 metric rename and earlier token-metric replacement are incompatible with collectors using the superseded names. Failed-operation counters may record zero or unknown-modality usage when providers omit usage, so absence and zero are not equivalent. The now-recommended operation-details event contains model inputs and outputs and needs explicit collection, access, retention, and redaction policy. Main-agent and skill fields remain development status; source URIs can expose internal names, paths, or credentials. Per-operation histograms are for distributions rather than totals or cost. No convention coordinates incident retention or proves identity across domains.",
-      "last_checked": "2026-10-12",
+      "version": "Unreleased main; semantic changes through 2026-10-26",
+      "status_notes": "Still unreleased. From 2026-10-14 through 2026-10-26 main narrowed MCP session-duration dimensions, clarified MCP JSON-RPC error attributes, made provider-supplied tool-call IDs conditionally required for execute_tool without synthetic fallbacks, changed inference counters to record only known positive contributions, and split embedding duration and input-token metrics from the generic inference metrics. Earlier October changes renamed inference metrics, covered failed operations, and promoted the input/output-bearing inference-details event to recommended.",
+      "evidence": ["GenAI client spans", "inference duration, time-to-first-chunk, and output-chunk timing", "dedicated embedding duration and per-operation input-token metrics", "tool and MCP operations", "provider-supplied tool-call ID on execute_tool spans", "MCP JSON-RPC error code and error type", "MCP session duration without per-operation transport dimensions", "conversation ID on tool spans", "sampling-relevant agent name", "stable main-agent entity and internal-span associations", "agent-skill name, source, resource, and script attributes", "positive known inference token contributions", "per-operation token histograms including failures", "per-modality token usage", "cache-read, cache-write, and reasoning token subsets", "response finish reasons", "recommended inference input and output details event"],
+      "relevance": "Improves persistent-agent, skill-lifecycle, tool-to-conversation, sampling, error, failure-cost, embedding, latency, and payload correlation while distinguishing provider-issued tool identifiers, aggregate positive token contributions, and per-operation distributions.",
+      "limitations": "Experimental unreleased main, not a versioned release or stable cross-provider contract. Repeated metric renames, the new embedding-specific instruments, and the positive-only counter rule are incompatible with earlier collectors and can create apparent discontinuities. Omitted or zero token contributions are intentionally not recorded, so absence does not prove zero use; per-operation histograms remain distributions rather than totals or cost. Provider-issued tool-call IDs improve correlation but do not authenticate an actor, and implementations must not invent fallback IDs. The recommended operation-details event contains model inputs and outputs and needs explicit collection, access, retention, and redaction policy. Main-agent and skill fields remain development status; source URIs can expose internal names, paths, or credentials. No convention coordinates incident retention or proves identity across domains.",
+      "last_checked": "2026-10-26",
       "primary_sources": [
         {
           "title": "OpenTelemetry GenAI Semantic Conventions repository",
@@ -118,6 +118,26 @@
         {
           "title": "Inference operation-details event promoted to recommended, 2026-10-09",
           "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/6fd0d763a092db245a54104fc1124031eb3c51d2"
+        },
+        {
+          "title": "MCP session-duration metric dimensions, 2026-10-14",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/8b489aed73a391f54500b6d4b2547290630a4027"
+        },
+        {
+          "title": "Provider-supplied tool-call ID requirement, 2026-10-17",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/0b9555d1c8665d5383a10d09a75625766564cea6"
+        },
+        {
+          "title": "MCP error-attribute clarification, 2026-10-17",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/f49da22056925ae9ba78ec5dd7fe1fa559adce05"
+        },
+        {
+          "title": "Positive-only inference usage counters, 2026-10-21",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/9ffc7e00c639be7712e544e3e54331e885dccf84"
+        },
+        {
+          "title": "Dedicated embedding metrics, 2026-10-26",
+          "url": "https://github.com/open-telemetry/semantic-conventions-genai/commit/20259355b9631e3f032dcc099d1b5a2666818c42"
         },
         {
           "title": "Agent-skill execute-tool attributes and span refinements, 2026-09-29",
@@ -236,12 +256,12 @@
       "domain": "inference",
       "type": "implementation",
       "maturity": "implementation",
-      "version": "v0.31.0 stable; selected main-only metrics through 2026-10-09",
-      "status_notes": "v0.31.0 remains the latest tagged release. Post-release main added a source-tier label to prompt-token cache accounting on 2026-10-06 and opt-in HiSparse host-block lifetime, idle-before-eviction, and reuse-gap histograms on 2026-10-09. These additions are implementation evidence on main, not released v0.31.0 behavior. Tagged Responses API timing, cache-write tokens, KV transport-failure versus expiry, CPU-offload, HiSparse residency, encoder-connector metrics, OpenTelemetry tracing, and experimental speculative-decoding acceptance metrics remain.",
-      "evidence": ["queue time", "time to first token", "generation time", "streamed-event inter-token latency", "request time per output token", "token rate", "model forward time", "model execute time", "tagged Responses API per-request timing", "Responses cache-write token count", "prompt-token cache count by device, host, disk, peer-to-peer, or external source", "KV transport failure and expiry metrics", "CPU-offload and HiSparse residency metrics", "HiSparse host-block lifetime, idle-before-eviction, and reuse-gap histograms", "encoder-connector metrics", "speculative-decoding acceptance length", "draft acceptance rate", "accepted-draft distribution"],
-      "relevance": "Separates inference-side queue, execution, streaming, cache/offload, connector-failure, and speculative-decoding behavior that otherwise appear as one network-visible request time; the main-only tier and lifecycle signals add evidence about where cached state came from and how host-resident blocks are reused.",
-      "limitations": "The cache-source label and HiSparse lifecycle histograms are untagged main-only changes, not stable v0.31.0 behavior; the latter require --kv-cache-metrics. Per-request timing remains opt-in through --enable-per-request-metrics, requires server statistics, and can add non-negligible CPU overhead. Metrics are omitted for multiple sequences and multi-generation Responses tool turns; streaming delivery requires a final usage-bearing event. Cache, connector, residency, and encoder metrics are implementation-specific and do not establish transferable state or cross-provider semantics. Speculative acceptance fields remain experimental, opt-in, and single-sequence. Timing and cache evidence can expose workload characteristics and require access and disclosure controls.",
-      "last_checked": "2026-10-12",
+      "version": "v0.32.0 stable, released 2026-10-18",
+      "status_notes": "v0.32.0 is the latest tagged release. It ships the previously main-only prompt-token cache-source accounting and opt-in HiSparse host-block lifetime, idle-before-eviction, and reuse-gap histograms. The release also adds KV-fetch request counts by stage, admission-rejection and watermark-request metrics, custom histogram buckets, JSON log formatting, and per-session profiling controls. These are implementation signals rather than provider-neutral protocol semantics.",
+      "evidence": ["queue time", "time to first token", "generation time", "streamed-event inter-token latency", "request time per output token", "token rate", "model forward time", "model execute time", "Responses API per-request timing", "Responses cache-write token count", "prompt tokens cached by device, host, disk, peer-to-peer, or external source", "KV-fetch requests by stage", "admission rejection counts", "watermark request counts", "KV transport failure and expiry metrics", "CPU-offload and HiSparse residency metrics", "HiSparse host-block lifetime, idle-before-eviction, and reuse-gap histograms", "encoder-connector metrics", "custom histogram buckets", "JSON-formatted logs", "per-session profiling controls", "speculative-decoding acceptance length", "draft acceptance rate", "accepted-draft distribution"],
+      "relevance": "Separates inference-side queue, admission, execution, streaming, cache/offload, connector-failure, watermark, and speculative-decoding behavior that otherwise appear as one network-visible request time; released tier, fetch-stage, and lifecycle signals add evidence about where cached state came from and how it is retrieved and reused.",
+      "limitations": "Per-request timing remains opt-in through --enable-per-request-metrics, requires server statistics, and can add non-negligible CPU overhead; the HiSparse lifecycle histograms require --kv-cache-metrics. Metrics are omitted for multiple sequences and multi-generation Responses tool turns, and streaming delivery requires a final usage-bearing event. Cache, connector, admission, watermark, residency, and encoder metrics are implementation-specific and do not establish transferable state or cross-provider semantics. Custom buckets and optional signal enablement can make deployments incomparable. Speculative acceptance fields remain experimental, opt-in, and single-sequence. Timing, profiling, log, and cache evidence can expose workload characteristics and require access and disclosure controls.",
+      "last_checked": "2026-10-26",
       "primary_sources": [
         {
           "title": "vLLM metrics and OpenTelemetry tracing",
@@ -256,15 +276,15 @@
           "url": "https://docs.vllm.ai/en/latest/features/speculative_decoding/acceptance_metrics/"
         },
         {
-          "title": "vLLM v0.31.0 release, 2026-10-05",
-          "url": "https://github.com/vllm-project/vllm/releases/tag/v0.31.0"
+          "title": "vLLM v0.32.0 release, 2026-10-18",
+          "url": "https://github.com/vllm-project/vllm/releases/tag/v0.32.0"
         },
         {
-          "title": "Prompt-token cache source-tier metric on main, 2026-10-06",
+          "title": "Prompt-token cache source-tier metric, shipped in v0.32.0",
           "url": "https://github.com/vllm-project/vllm/commit/e37e51dd246cf421c554e7d6f53e178e3fd29085"
         },
         {
-          "title": "HiSparse host-block lifecycle metrics on main, 2026-10-09",
+          "title": "HiSparse host-block lifecycle metrics, shipped in v0.32.0",
           "url": "https://github.com/vllm-project/vllm/commit/4c43254d52785d7a69300fdfb6c79987200c277c"
         },
         {
@@ -684,11 +704,11 @@
       "type": "internet-draft",
       "maturity": "candidate",
       "version": "draft-ietf-opsawg-collected-data-manifest-16",
-      "status_notes": "IETF OPSAWG document revision -16 was posted 2026-10-05 and is in IESG Evaluation for publication as a Proposed Standard. An approval ballot was issued 2026-10-07 for the 2026-10-22 telechat; IANA expert and XML reviews completed successfully, IANA reports actions needed, and the 2026-10-08 operations review found only nits.",
+      "status_notes": "IETF OPSAWG document revision -16, posted 2026-10-05, moved to IESG Evaluation::AD Followup on 2026-10-22 after the IESG ballot. The document has enough positions to pass once four DISCUSS positions are resolved; IANA reports actions needed, and automated YANG validation reports no errors or warnings.",
       "evidence": ["platform identity and vendor", "software and operating-system versions", "YANG library and schema revisions", "subscription identifier", "configured collection mode", "actual collection period"],
       "relevance": "Makes YANG telemetry more defensible for later analysis by binding observations to the platform, schema, subscription, and collection conditions under which they were produced.",
-      "limitations": "Not yet approved or published as an RFC; the IESG ballot and telechat are pending and IANA actions remain. The Platform Manifest and current-period augmentation are normative, but the Data Collection Manifest remains a non-normative example because YANG lacks design-time schema mount. Data lineage, task correlation, cross-domain disclosure policy, and proof that metadata is accurate are out of scope.",
-      "last_checked": "2026-10-12",
+      "limitations": "Not yet approved or published as an RFC; four IESG DISCUSS positions require resolution, AD follow-up and IANA actions remain, and there is no current telechat date. The Platform Manifest and current-period augmentation are normative, but the Data Collection Manifest remains a non-normative example because YANG lacks design-time schema mount. Data lineage, task correlation, cross-domain disclosure policy, and proof that metadata is accurate are out of scope.",
+      "last_checked": "2026-10-26",
       "primary_sources": [
         {
           "title": "A Data Manifest for Contextualized Telemetry Data, revision -16",
@@ -748,19 +768,19 @@
       "domain": "path-measurement",
       "type": "internet-draft",
       "maturity": "candidate",
-      "version": "draft-ietf-ippm-stamp-ext-hdr-16",
-      "status_notes": "IETF IPPM working-group draft revised to -16 on 2026-10-07 during IETF Last Call for Proposed Standard, which ends 2026-10-15. Revision -16 responds to ARTART review by clarifying reflected-TLV field meanings, header selection and matching, ordered TLV processing, and removal of trailing TLVs when needed to fit the response MTU.",
-      "evidence": ["reflected IP and IPv6 extension headers", "IOAM carried in reflected headers", "header-selection conformance flags", "ordered reflected TLVs", "reverse-direction header observations", "received TTL and Hop-Limit data", "trailing-TLV removal for response MTU"],
-      "relevance": "Connects active probes with selected on-path header evidence while clarifying interoperability requirements; entry into IETF Last Call makes this a late-review candidate rather than an early draft.",
-      "limitations": "In IETF Last Call, not approved or published as an RFC. The 2026-10-06 ARTART review records Ready with Issues and other review work remains incomplete; three IPR disclosures are listed. The cited Teaparty commit targets revision -04, so -16 conformance is not established. Limited-domain use, header disclosure, reflection amplification, data-plane access, and MTU constraints remain deployment concerns.",
-      "last_checked": "2026-10-12",
+      "version": "draft-ietf-ippm-stamp-ext-hdr-25",
+      "status_notes": "IETF IPPM working-group draft revised to -25 on 2026-10-22 and is in IESG Evaluation::AD Followup for Proposed Standard. The ballot has enough positions to pass once remaining issues are resolved, and IANA marks the version changed and requiring review. The late revisions specify IPv4, IPv6, and UDP header handling, add STAMP session-state notifications and rate limiting for all STAMP sessions, and refine MTU, operational, and security behavior. If approved, the document updates RFC 8762.",
+      "evidence": ["reflected IPv4 and IPv6 extension headers", "IOAM carried in reflected headers", "header-selection conformance flags", "ordered reflected TLVs", "reverse-direction header observations", "received TTL and Hop-Limit data", "IPv4, IPv6, and UDP header handling", "STAMP session-state notifications", "rate limiting for all STAMP sessions", "trailing-TLV removal for response MTU"],
+      "relevance": "Connects active probes with selected on-path header evidence and now specifies session-state notification and rate-limiting behavior; IESG Evaluation makes this a late-review candidate rather than an early draft.",
+      "limitations": "Not approved or published as an RFC; AD follow-up and IANA re-review remain, and three IPR disclosures are listed. The cited Teaparty commit targets revision -04, so current -25 conformance is not established. Limited-domain use, header disclosure, reflection amplification, data-plane access, rate-limit configuration, and MTU constraints remain deployment concerns.",
+      "last_checked": "2026-10-26",
       "primary_sources": [
         {
-          "title": "STAMP IP and IPv6 Extension Header Reflection, revision -16",
+          "title": "STAMP IP and IPv6 Extension Header Reflection, revision -25",
           "url": "https://datatracker.ietf.org/doc/draft-ietf-ippm-stamp-ext-hdr/"
         },
         {
-          "title": "Document history, revision -16, and IETF Last Call",
+          "title": "Document history, revision -25, and IESG Evaluation",
           "url": "https://datatracker.ietf.org/doc/draft-ietf-ippm-stamp-ext-hdr/history/"
         },
         {
@@ -813,24 +833,24 @@
       "domain": "task-context",
       "type": "internet-draft",
       "maturity": "draft",
-      "version": "draft-gilda-wimse-agent-audit-record-02",
-      "status_notes": "Individual Internet-Draft revised 2026-10-05 with no formal IETF standing. Revision -02 adds a required evaluation object that distinguishes evaluated from not-evaluated requests with a closed set of unavailable inputs, plus optional human-oversight records and signed-record digests. Records valid under -01 are not automatically valid under -02. The companion agent-evidence-vectors v0.17.7 release on 2026-10-11 implements the 55-vector -02 corpus with Go and Python verification paths and signed corpus digests.",
-      "evidence": ["canonical signed audit record", "agent, delegation, resource, and request binding", "authorization decision and observed effect", "evaluated versus not-evaluated status and unavailable inputs", "human oversight and actor records", "signed-record digest linkage", "agree, disagree, not-exercised, and indeterminate outcomes", "correlation scope and time basis", "observation vantage and field-evidence partition", "remediation timing", "55 published Appendix B conformance vectors", "Go and Python reference verifiers", "signed corpus digest list"],
-      "relevance": "Supplies a concrete candidate record and verification algorithm for correlating authorization decisions with independently observed effects across a service boundary; the tagged vectors make its syntax and verdict semantics executable rather than only prose.",
-      "limitations": "Individual proposal with no working-group adoption, IETF consensus, independent interoperability result, or proof that the companion verifiers are complete; the Datatracker records a related IPR disclosure. Revision -02 is structurally incompatible with -01 records because evaluation is now required. The predicate URI and companion corpus are author-controlled and unregistered with IANA. A claimed observation vantage or human actor is not self-proving, a producer can withhold whole records, and a valid signature or internally coherent record does not prove completeness or external truth. Identifiers, paths, oversight records, and timing can disclose sensitive activity.",
-      "last_checked": "2026-10-12",
+      "version": "draft-gilda-audit-agent-audit-record-00",
+      "status_notes": "A replacement individual Internet-Draft was posted 2026-10-16 and explicitly archives draft-gilda-wimse-agent-audit-record-02; it has no formal IETF standing. The replacement defines 17 required predicate members and one optional member, adds evaluation-input freshness and anchor rules, retains decision/effect checks, and maps the record to proposed AUDIT work. The companion agent-evidence-vectors v0.26.0 release on 2026-10-26 rewrites the audit corpus for the replacement draft and expands it to 111 cases with Go and Python verification paths.",
+      "evidence": ["canonical signed audit record", "agent, delegation, resource, and request binding", "authorization decision and observed effect", "17 required and one optional predicate members", "evaluated versus not-evaluated status and unavailable inputs", "evaluation-input identity and freshness", "human oversight and actor records", "signed-record digest linkage", "anchor requirements", "agree, disagree, not-exercised, and indeterminate outcomes", "correlation scope and time basis", "observation vantage and field-evidence partition", "remediation timing", "111 published conformance cases", "Go and Python reference verifiers", "signed corpus digest list"],
+      "relevance": "Supplies a concrete candidate record and verification algorithm for correlating authorization decisions with independently observed effects across a service boundary; the replacement draft tightens evaluation-input and anchoring semantics, and the tagged corpus makes its syntax and verdict rules executable rather than only prose.",
+      "limitations": "Replacement individual proposal with no working-group adoption, IETF consensus, independent interoperability result, or proof that the companion verifiers are complete; Datatracker lists two IPR disclosures. Legacy -02 records lack the new evaluation.inputs structure and are malformed under -00; v0.26.0 rewrites 69 of 70 retained corpus members, removes one, adds cases, and requires consumers to re-pin file IDs using ID-MAP. The predicate URI and companion corpus are author-controlled and unregistered with IANA. A claimed observation vantage or human actor is not self-proving, a producer can withhold whole records, and a valid signature or internally coherent record does not prove completeness or external truth. Identifiers, paths, oversight records, and timing can disclose sensitive activity.",
+      "last_checked": "2026-10-26",
       "primary_sources": [
         {
-          "title": "An Audit Record Format for AI Agent Authorization Decisions, revision -02",
-          "url": "https://datatracker.ietf.org/doc/draft-gilda-wimse-agent-audit-record/"
+          "title": "An Audit Record Format for AI Agent Authorization Decisions, replacement revision -00",
+          "url": "https://datatracker.ietf.org/doc/draft-gilda-audit-agent-audit-record/"
         },
         {
-          "title": "Document history showing revision -02 publication, 2026-10-05",
-          "url": "https://datatracker.ietf.org/doc/draft-gilda-wimse-agent-audit-record/history/"
+          "title": "Replacement document history, 2026-10-16",
+          "url": "https://datatracker.ietf.org/doc/draft-gilda-audit-agent-audit-record/history/"
         },
         {
-          "title": "Agent evidence vectors v0.17.7 release with the 55-member revision -02 corpus, 2026-10-11",
-          "url": "https://github.com/probityai/agent-evidence-vectors/releases/tag/v0.17.7"
+          "title": "Agent evidence vectors v0.26.0 release with the 111-case replacement-draft corpus, 2026-10-26",
+          "url": "https://github.com/probityai/agent-evidence-vectors/releases/tag/v0.26.0"
         },
         {
           "title": "Author-controlled predicate registry",
@@ -844,12 +864,12 @@
       "domain": "task-context",
       "type": "internet-draft",
       "maturity": "draft",
-      "version": "draft-palanisamy-scitt-aac-otel-00",
-      "status_notes": "Individual Internet-Draft posted 2026-10-02 with no formal IETF standing. It defines the namespaced org.agentactioncapsule.otel payload block for binding W3C trace/span context and selected OpenTelemetry GenAI attributes into a sealed Agent Action Capsule, plus the advisory reverse-join span attribute aac.capsule_id. capsule-emit v0.9.0 was tagged 2026-10-07; a later untagged main commit on 2026-10-09 adds validated companion-defined top-level extensions to the Go emitter and includes them in capsule identity without interpreting their semantics.",
+      "version": "draft-palanisamy-scitt-aac-otel-00; capsule-emit Python v0.13.0",
+      "status_notes": "The individual Internet-Draft remains revision -00 with no formal IETF standing. It defines the namespaced org.agentactioncapsule.otel payload block and advisory aac.capsule_id reverse join. Since the previous baseline, capsule-emit shipped Python 0.9.1 through 0.13.0, TypeScript 0.3.1, and Rust 0.0.8. Python 0.13.0 changes the default ledger to a store directory, refuses new flat JSONL ledgers while retaining migration commands, writes cross-stream confirms links into references[], and requires Agent Action Capsule 0.12.0 or later with its shared verifier.",
       "evidence": ["trace ID and span ID or their deployment-policy digests", "parent span ID and trace flags", "digest-only tracestate", "allow-listed resource attributes", "allow-listed OpenTelemetry GenAI attributes with pinned semantic-convention source", "advisory aac.capsule_id reverse join", "backfilled-versus-contemporaneous provenance", "positive and must-fail vectors"],
-      "relevance": "Proposes an explicit two-way join between active OpenTelemetry traces and signed, content-addressed agent-action evidence while defining disclosure tiers and a strict attribute allow-list; the emitter's main branch now has a generic placement mechanism for companion-defined top-level members.",
-      "limitations": "Individual proposal with no working-group adoption, formal IETF standing, interoperability result, or OpenTelemetry registry acceptance. The top-level extension support is untagged and generic: it does not validate the OpenTelemetry extension semantics, and the separate Agent Action Capsule base profile still has not standardised the placement. The block is informational to verification and does not prove that the action occurred; a same-producer span is not independent corroboration. Trace and span identifiers can be lookup keys into user-bearing systems, so clear disclosure is conditional. Tier-2 conformance-registry structure remains unsettled.",
-      "last_checked": "2026-10-12",
+      "relevance": "Proposes an explicit two-way join between active OpenTelemetry traces and signed, content-addressed agent-action evidence while defining disclosure tiers and a strict attribute allow-list; tagged multi-language emitter and verifier work improves the deployability of the underlying capsule records.",
+      "limitations": "Individual proposal with no working-group adoption, formal IETF standing, interoperability result, or OpenTelemetry registry acceptance. The tagged emitter and shared verifier validate base Agent Action Capsules, not this OpenTelemetry extension's namespaced payload or reverse-join semantics, and the separate base profile still has not standardised placement. Python 0.13.0 is a storage-format migration: new flat ledgers are refused and callers must use import/export tooling. The block is informational to verification and does not prove that the action occurred; a same-producer span is not independent corroboration. Trace and span identifiers can be lookup keys into user-bearing systems, so clear disclosure is conditional. Tier-2 conformance-registry structure remains unsettled.",
+      "last_checked": "2026-10-26",
       "primary_sources": [
         {
           "title": "OpenTelemetry Correlation Extension for Agent Action Capsules, revision -00",
@@ -864,12 +884,16 @@
           "url": "https://github.com/action-state-group/capsule-emit"
         },
         {
-          "title": "capsule-emit v0.9.0 release, 2026-10-07",
-          "url": "https://github.com/action-state-group/capsule-emit/releases/tag/v0.9.0"
+          "title": "capsule-emit Python v0.13.0 release, 2026-10-24",
+          "url": "https://github.com/action-state-group/capsule-emit/releases/tag/python/v0.13.0"
         },
         {
-          "title": "Companion-defined top-level extension support on main, 2026-10-09",
-          "url": "https://github.com/action-state-group/capsule-emit/commit/f183b1557ab06538c6e79412bc34dcb54980d4d7"
+          "title": "capsule-emit TypeScript v0.3.1 release, 2026-10-14",
+          "url": "https://github.com/action-state-group/capsule-emit/releases/tag/ts/v0.3.1"
+        },
+        {
+          "title": "capsule-emit Rust v0.0.8 release, 2026-10-15",
+          "url": "https://github.com/action-state-group/capsule-emit/releases/tag/crates/capsule-emit-v0.0.8"
         }
       ]
     },
@@ -908,6 +932,63 @@
         {
           "title": "Rule Provenance for Autonomous AI Agent Audit Records, revision -00",
           "url": "https://datatracker.ietf.org/doc/draft-piehl-agent-rule-provenance/"
+        }
+      ]
+    },
+    {
+      "id": "aer1-execution-receipt",
+      "name": "AER-1 Portable Execution Receipt",
+      "domain": "task-context",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-zambo-aer1-26",
+      "status_notes": "Individual Internet-Draft revision -26 was posted 2026-10-22 and has no formal IETF standing. It specifies portable, independently checkable tool-call receipts over canonical request and result bytes, tool and caller scope, provenance class, a stable public verification URL, and workflow aggregation through Merkle roots and job hash chains. The author reports a deployed reference service and an open conformance kit with seven language runners, 124 vectors, and 127 checks per runner.",
+      "evidence": ["canonical request and result bytes", "output commitment", "tool and caller scope", "provenance class", "stable public verification URL", "receipt identifier and signature", "workflow Merkle root", "job hash chain", "124 conformance vectors across seven language runners"],
+      "relevance": "Offers a concrete candidate receipt for carrying tool-execution evidence across implementation and organisational boundaries, including aggregation into a verifiable workflow trail.",
+      "limitations": "Individual proposal with no working-group adoption, IETF consensus, or independent standards status. The public service, draft, conformance kit, and reported interoperability evidence are operated or reported by the same author, so independent deployment remains unverified. A receipt proves the recorded canonical bytes and signature, not that the claimed external-world action occurred or completed correctly. Stable public URLs and repeated identifiers can expose or link activity, and operators still need disclosure, retention, and availability policy.",
+      "last_checked": "2026-10-26",
+      "primary_sources": [
+        {
+          "title": "AER-1 Portable Execution Receipts, revision -26",
+          "url": "https://datatracker.ietf.org/doc/draft-zambo-aer1/"
+        }
+      ]
+    },
+    {
+      "id": "agent-execution-evidence",
+      "name": "Agent Execution Evidence",
+      "domain": "task-context",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-thaha-scitt-agent-execution-evidence-00",
+      "status_notes": "Individual Internet-Draft posted 2026-10-19 with no formal IETF standing and intended Standards Track status. It profiles SCITT Signed Statements for agent identity, capabilities, assessment, and supervision; hash-chains every-call evidence; defines receiver admission records, cross-operator linked records, and offline verification bundles. The cited Sijil prototype records decision points, tasks, refusals, approvals, and a signed hash chain, but does not yet export this draft's encoding.",
+      "evidence": ["agent identity and capability statement", "assessment and supervised-status binding", "per-call hash-chained execution records", "receiver admission decision", "cross-operator record linkage", "offline verification bundle", "tasks, refusals, approvals, and decision points"],
+      "relevance": "Proposes an integrity-preserving evidence layer spanning agent admission, every-call execution, and cross-operator verification, directly addressing identity, retry lineage, and audit gaps.",
+      "limitations": "Individual proposal with no working-group adoption, IETF consensus, conforming implementation, or interoperability result. The cited prototype does not export the proposed encoding and lacks multiple draft features, including COSE signing, epochs, bundles, SCRAPI registration, per-call signatures, identity-validity and assurance checks, admission records, and cross-call linking. Some components use a Business Source License while the verifier and rule packs are open. Common scope representation, supervision and trust lists, and registries remain open issues. Signed chains do not prove record completeness or external outcome truth.",
+      "last_checked": "2026-10-26",
+      "primary_sources": [
+        {
+          "title": "Agent Execution Evidence, revision -00",
+          "url": "https://datatracker.ietf.org/doc/draft-thaha-scitt-agent-execution-evidence/"
+        }
+      ]
+    },
+    {
+      "id": "agent-evidence-binding",
+      "name": "Evidence Binding for AI Agent Credentials",
+      "domain": "task-context",
+      "type": "internet-draft",
+      "maturity": "draft",
+      "version": "draft-thaha-wimse-agent-evidence-binding-00",
+      "status_notes": "Individual Internet-Draft posted 2026-10-19 with no formal IETF standing and intended Informational status. It maps the Agent Identity Management System minimum fields to Agent Execution Evidence, defines an aee_evidence credential claim binding a persistent agent, policy, evidence service, and optional assurance, and proposes admission-time checking, an AEE-Caller-Ref HTTP field, and actor/principal delegation chains.",
+      "evidence": ["credential-to-evidence-service binding", "persistent agent and policy identifiers", "optional assurance level", "admission-time evidence check", "AEE-Caller-Ref HTTP field", "actor and principal delegation chain", "audit-record composition"],
+      "relevance": "Provides a candidate bridge between agent credentials and the evidence service and transaction used to verify execution, narrowing the identity-to-audit correlation gap.",
+      "limitations": "Individual informational proposal with no working-group adoption, IETF consensus, implementation-status section, reference implementation, or interoperability evidence. It depends on the separate Agent Execution Evidence draft and proposed registries. Persistent logical identifiers and repeated policy digests permit cross-transaction linkability; the HTTP field reveals the evidence service and transaction to intermediaries and operators even though it carries no prompt or tool content. Credential binding does not establish that evidence is complete or truthful.",
+      "last_checked": "2026-10-26",
+      "primary_sources": [
+        {
+          "title": "Evidence Binding for AI Agent Credentials, revision -00",
+          "url": "https://datatracker.ietf.org/doc/draft-thaha-wimse-agent-evidence-binding/"
         }
       ]
     },
