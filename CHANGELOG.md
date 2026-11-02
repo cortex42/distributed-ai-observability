@@ -7,6 +7,28 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 - Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
 - Added full licence texts, scope and attribution guidance, and matching contribution terms.
 
+## 0.12.0 — 2026-11-02
+
+- Recorded unreleased OpenTelemetry GenAI changes through 1 November: caller-owned delegation and handoff, A2A spans, explicit content-capture and upload controls, external content references, bounded context propagation, MCP HTTP errors, TTFC boundaries, and token-total semantics. Maturity remains experimental and no release exists.
+- Updated Agent Run Metrics to individual draft `-02`, which treats missing child reports as incomplete lower bounds, adds subtree-total consistency findings, and separates accounting lineage from authorization. It retains draft maturity and has no conforming emitter.
+- Updated STAMP reflected headers to `-26` after IESG approval on 27 October and entry into the RFC Editor Queue. Candidate maturity is unchanged because it is not yet an RFC.
+- Updated the individual agent-audit-record to `-03`, companion vectors to v0.31.0, and jcs-admit to 0.1.1, including consumption and retry identity, sequence and freshness checks, predicate-version and anchoring refinements, stricter readers, a 141-case audit corpus at v0.28.0, and corrected DSSE signature-failure classification.
+- Recorded capsule-emit Python v0.15.0 and Rust v0.0.11, including cross-language production and store-backed-ledger fixtures and the breaking refusal of new capsule records on flat ledgers. These releases improve the base capsule implementation, not conformance to the unchanged OpenTelemetry extension draft.
+- Updated Agent Execution Evidence to individual draft `-02` and evidence binding to `-03`, adding call digests, replay refusal, status time, RFC 8693 actor-chain semantics, and audit-record composition while documenting incomplete history and shared-gateway limitations.
+- Added four individual drafts with no formal IETF standing: dynamic service performance for agent selection, ICON observability/control requirements, AXES recomputable evidence envelopes, and replayable authority histories. AXES has byte/chain reproductions; IronTrellis v1.0.0-rc.2.2 is implementation evidence, not standards adoption or production certification.
+- Added six monitoring sources and refined the vocabulary, topology, disclosure, retention, retry, audit, and governance gaps. FOX remains an unchanged working hypothesis.
+
+## 0.11.0 — 2026-10-26
+
+- Recorded unreleased OpenTelemetry GenAI changes through 26 October: provider-supplied tool-call IDs, clarified MCP error and session dimensions, positive-only inference usage counters, and dedicated embedding metrics. Maturity remains experimental.
+- Updated vLLM to the 18 October v0.32.0 release, which ships cache-source and HiSparse lifecycle metrics and adds KV-fetch-stage, admission, watermark, histogram, logging, and profiling controls. Maturity remains implementation.
+- Updated STAMP reflected headers from `-16` to `-25` in IESG Evaluation::AD Followup, including header-processing, session-notification, rate-limiting, MTU, and security refinements. It remains a candidate, not an RFC.
+- Recorded the OPSAWG Data Manifest's move to IESG Evaluation::AD Followup with four DISCUSS positions, IANA work, and clean automated YANG validation. Candidate maturity is unchanged.
+- Replaced the archived `draft-gilda-wimse-agent-audit-record-02` baseline with `draft-gilda-audit-agent-audit-record-00` and the incompatible 111-case v0.26.0 corpus, including evaluation-input freshness, anchoring, migration, and IPR caveats.
+- Recorded capsule-emit Python v0.13.0 plus current TypeScript and Rust releases, while distinguishing improved base-capsule deployability from validation of the unchanged OpenTelemetry extension draft.
+- Added individual AER-1 execution-receipt `-26`, Agent Execution Evidence `-00`, and agent evidence-binding `-00` drafts as gap-fillers for tool receipts, every-call evidence, admission, credential binding, and cross-operator verification. None has formal IETF standing or independently verified cross-provider interoperability.
+- Added three monitoring sources and refined the correlation, vocabulary, disclosure, retry, state-affinity, and audit gaps. FOX remains an unchanged working hypothesis.
+
 ## 0.10.0 — 2026-10-12
 
 - Reclassified the CATS framework from a candidate Internet-Draft to the published Informational RFC 10053 framework and added Informational RFC 10054 for the CATS problem, distributed-inference use case, affinity, metric-agreement, and confidentiality requirements.
