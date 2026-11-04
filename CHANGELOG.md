@@ -7,6 +7,17 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 - Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
 - Added full licence texts, scope and attribution guidance, and matching contribution terms.
 
+## 0.12.0 — 2026-11-02
+
+- Recorded unreleased OpenTelemetry GenAI changes through 1 November: caller-owned delegation and handoff, A2A spans, explicit content-capture and upload controls, external content references, bounded context propagation, MCP HTTP errors, TTFC boundaries, and token-total semantics. Maturity remains experimental and no release exists.
+- Updated Agent Run Metrics to individual draft `-02`, which treats missing child reports as incomplete lower bounds, adds subtree-total consistency findings, and separates accounting lineage from authorization. It retains draft maturity and has no conforming emitter.
+- Updated STAMP reflected headers to `-26` after IESG approval on 27 October and entry into the RFC Editor Queue. Candidate maturity is unchanged because it is not yet an RFC.
+- Updated the individual agent-audit-record to `-03`, companion vectors to v0.31.0, and jcs-admit to 0.1.1, including consumption and retry identity, sequence and freshness checks, predicate-version and anchoring refinements, stricter readers, a 141-case audit corpus at v0.28.0, and corrected DSSE signature-failure classification.
+- Recorded capsule-emit Python v0.15.0 and Rust v0.0.11, including cross-language production and store-backed-ledger fixtures and the breaking refusal of new capsule records on flat ledgers. These releases improve the base capsule implementation, not conformance to the unchanged OpenTelemetry extension draft.
+- Updated Agent Execution Evidence to individual draft `-02` and evidence binding to `-03`, adding call digests, replay refusal, status time, RFC 8693 actor-chain semantics, and audit-record composition while documenting incomplete history and shared-gateway limitations.
+- Added four individual drafts with no formal IETF standing: dynamic service performance for agent selection, ICON observability/control requirements, AXES recomputable evidence envelopes, and replayable authority histories. AXES has byte/chain reproductions; IronTrellis v1.0.0-rc.2.2 is implementation evidence, not standards adoption or production certification.
+- Added six monitoring sources and refined the vocabulary, topology, disclosure, retention, retry, audit, and governance gaps. FOX remains an unchanged working hypothesis.
+
 ## 0.11.0 — 2026-10-26
 
 - Recorded unreleased OpenTelemetry GenAI changes through 26 October: provider-supplied tool-call IDs, clarified MCP error and session dimensions, positive-only inference usage counters, and dedicated embedding metrics. Maturity remains experimental.

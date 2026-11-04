@@ -386,6 +386,48 @@
       "url": "https://datatracker.ietf.org/doc/draft-thaha-wimse-agent-evidence-binding/",
       "tracks": ["agent-evidence-binding"],
       "check_for": ["revision", "working-group adoption", "credential claim or HTTP binding change", "implementation or interoperability evidence", "privacy or security change", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-agent-dynamic-service-selection",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-zhu-agent-dynamic-service-selection/",
+      "tracks": ["agent-dynamic-service-selection"],
+      "check_for": ["revision", "working-group adoption", "metric or observation-scope semantics", "wire format or data model", "implementation evidence", "privacy or security change", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-icon-agent-observability-requirements",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-mcw-opsawg-icon-requirements/",
+      "tracks": ["icon-agent-observability-requirements"],
+      "check_for": ["revision", "working-group adoption", "observability or intervention requirement change", "privacy, redaction, or completeness semantics", "protocol or implementation evidence", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-axes-evidence-envelope",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-sansone-axes-evidence-envelope/",
+      "tracks": ["axes-evidence-envelope"],
+      "check_for": ["revision", "working-group adoption", "envelope schema or signature profile", "redaction construction", "independent implementation or conformance evidence", "privacy or security change", "expiry or replacement"]
+    },
+    {
+      "id": "axes-reference-implementation",
+      "organisation": "Magentix AI",
+      "url": "https://github.com/magentixai/axes",
+      "tracks": ["axes-evidence-envelope"],
+      "check_for": ["tagged release", "schema or verifier change", "new vectors", "independent reproduction", "profile-evaluator interoperability", "security issue"]
+    },
+    {
+      "id": "ietf-agent-authority-history",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-rampertab-audit-agent-authority-history/",
+      "tracks": ["agent-authority-history"],
+      "check_for": ["revision", "working-group adoption", "authority, replacement, or replay semantics", "interoperable encoding", "implementation evidence", "privacy or security change", "expiry or replacement"]
+    },
+    {
+      "id": "irontrellis-releases",
+      "organisation": "RAmEx Labs",
+      "url": "https://github.com/zerohourzulu/irontrellis/releases",
+      "tracks": ["agent-authority-history"],
+      "check_for": ["tagged release", "history-format compatibility", "hook or verifier security change", "cross-platform support", "independent verification", "production-readiness evidence"]
     }
   ]
 }
