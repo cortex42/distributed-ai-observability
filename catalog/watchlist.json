@@ -111,7 +111,7 @@
       "id": "ietf-active-drafts",
       "organisation": "IETF",
       "url": "https://datatracker.ietf.org/doc/active/",
-      "tracks": ["bmp", "on-path-telemetry-yang", "cats-framework", "cats-requirements", "cats-agent-state-affinity", "cats-data-model", "cats-oam-framework", "cats-oam-usecases", "quality-of-outcome", "distributed-inference-transport", "agent-audit-record", "local-tool-call-proof", "agent-rule-provenance", "aer1-execution-receipt", "agent-execution-evidence", "agent-evidence-binding"],
+      "tracks": ["bmp", "on-path-telemetry-yang", "cats-framework", "cats-requirements", "cats-agent-state-affinity", "cats-data-model", "cats-oam-framework", "cats-oam-usecases", "quality-of-outcome", "distributed-inference-transport", "agent-audit-record", "local-tool-call-proof", "agent-rule-provenance", "aer1-execution-receipt", "agent-execution-evidence", "agent-evidence-binding", "agentops-observability", "wimse-aims", "agent-enforcement-points"],
       "check_for": ["new revisions", "replacement or expiry", "working-group adoption", "IESG or RFC transition", "new AI inference observability work", "new retry, audit, statistics, or path-evidence work"]
     },
     {
@@ -159,9 +159,9 @@
     {
       "id": "ietf-on-path-telemetry-yang",
       "organisation": "IETF",
-      "url": "https://datatracker.ietf.org/doc/draft-ietf-ippm-on-path-telemetry-yang/",
+      "url": "https://datatracker.ietf.org/doc/draft-ietf-bpm-on-path-telemetry-yang/",
       "tracks": ["on-path-telemetry-yang", "yang-push", "ioam"],
-      "check_for": ["revision", "working-group status", "YANG model change", "publication transition"]
+      "check_for": ["revision", "replacement or expiry", "working-group status", "YANG model change", "publication transition"]
     },
     {
       "id": "ietf-cats-framework",
@@ -257,7 +257,7 @@
     {
       "id": "agent-run-metrics-contextburn",
       "organisation": "Agent Run Metrics authors",
-      "url": "https://github.com/arsentev/contextburn/releases",
+      "url": "https://github.com/arsentev-ai/contextburn/releases",
       "tracks": ["agent-run-metrics"],
       "check_for": ["report-format emitter", "tagged release", "schema compatibility", "independent use or interoperability evidence"]
     },
@@ -428,6 +428,27 @@
       "url": "https://github.com/zerohourzulu/irontrellis/releases",
       "tracks": ["agent-authority-history"],
       "check_for": ["tagged release", "history-format compatibility", "hook or verifier security change", "cross-platform support", "independent verification", "production-readiness evidence"]
+    },
+    {
+      "id": "ietf-agentops-observability",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-pei-opsawg-agentops-observability/",
+      "tracks": ["agentops-observability"],
+      "check_for": ["revision", "working-group adoption", "event or diagnosis schema change", "OpenTelemetry mapping", "implementation or benchmark evidence", "privacy or security change", "expiry or replacement"]
+    },
+    {
+      "id": "ietf-wimse-aims",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-ietf-wimse-aims/",
+      "tracks": ["wimse-aims", "agent-evidence-binding", "agent-audit-record"],
+      "check_for": ["revision", "working-group status", "identity or authorization semantics", "audit and remediation requirements", "implementation evidence", "privacy or security change", "publication transition"]
+    },
+    {
+      "id": "ietf-agent-enforcement-points",
+      "organisation": "IETF",
+      "url": "https://datatracker.ietf.org/doc/draft-liu-audit-enforcement-points/",
+      "tracks": ["agent-enforcement-points"],
+      "check_for": ["revision", "working-group adoption", "enforcement-point or coverage model change", "audit schema", "implementation or conformance evidence", "privacy or security change", "expiry or replacement"]
     }
   ]
 }
