@@ -7,6 +7,18 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 - Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
 - Added full licence texts, scope and attribution guidance, and matching contribution terms.
 
+## 0.13.0 — 2026-11-09
+
+- Repaired the catalogue JSON and removed duplicate landscape rows introduced by the 2 November branch merge; the restored content matches the reviewed pre-merge scan before applying this week's evidence.
+- Updated OpenTelemetry Semantic Conventions to v1.45.0 and recorded its stable RPC semantics, attribute migrations, database propagation, endpoint metadata, and sensitive opt-in HTTP-body fields. Standard maturity is unchanged.
+- Recorded unreleased OpenTelemetry GenAI changes through 6 November for real-time sessions, retrieval, workflow/tool spans, remote-agent duration, request streaming, logical inference counts, and exception events. Maturity remains experimental and no release exists.
+- Reclassified OpenMetrics 2.0 from `experimental` to catalogue `candidate` for the October 2.0.0-rc1 release while preserving the upstream page's explicit Experimental status.
+- Updated vLLM to the release published as v0.33.0 on 2 November, including frontend, Mooncake, KV-transfer, profiler, paused-generation, and watchdog signals. The non-prerelease release metadata conflicts with its `v0.33.0rc3` tag and is recorded as uncertain.
+- Recorded the replacement of the archived IPPM On-Path Telemetry YANG `-07` by BPM working-group draft `-00`, and updated CATS OAM to substantive revision `-02` with explicit single-domain scope and in-band/out-of-band mechanism guidance.
+- Updated agent-evidence-vectors to v0.36.3, capsule-emit with Go v0.4.0 and artifact crate v0.0.3, and IronTrellis to rc.2.3, preserving the distinction between implementation evidence and draft/standards maturity.
+- Added AgentOps failure observability, the WIMSE working-group AIMS framework, and agent enforcement-point coverage as gap-fillers. The first and third are individual drafts with no formal IETF standing; AIMS is a working-group draft, not an RFC or protocol.
+- Updated the moved contextburn and On-Path Telemetry watch URLs and added three authoritative monitoring sources. FOX remains an unchanged working hypothesis.
+
 ## 0.12.0 — 2026-11-02
 
 - Recorded unreleased OpenTelemetry GenAI changes through 1 November: caller-owned delegation and handoff, A2A spans, explicit content-capture and upload controls, external content references, bounded context propagation, MCP HTTP errors, TTFC boundaries, and token-total semantics. Maturity remains experimental and no release exists.
