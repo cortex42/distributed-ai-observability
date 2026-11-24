@@ -4,6 +4,10 @@ Material changes to the landscape and catalogue are recorded here. Routine scans
 
 ## Unreleased
 
+- Added llm-d v1.0.0 as implementation evidence for metric-, KV-cache-, and latency-aware inference placement, including Router/EPP endpoint selection, predicted TTFT/TPOT feedback, SLO signals, Prometheus/Grafana metrics, and OpenTelemetry tracing.
+- Added four llm-d authoritative watch sources and documented the remaining boundary: its observability/control loop is local to an inference environment and does not solve cross-provider correlation, network-path attribution, disclosure policy, or portable state semantics.
+- Expanded the weekly research prompt with an explicit landscape-discovery pass for established but untracked implementations, so a no-change result requires checking for missing systems as well as changes to known sources.
+
 - Added CC BY 4.0 licensing for original documentation and catalogue content, and MIT licensing for software, configuration and source-code examples.
 - Added full licence texts, scope and attribution guidance, and matching contribution terms.
 

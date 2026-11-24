@@ -1226,6 +1226,26 @@
       ]
     },
     {
+      "id": "llm-d",
+      "name": "llm-d distributed inference serving",
+      "domain": "compute-network",
+      "type": "implementation",
+      "maturity": "implementation",
+      "version": "v1.0.0 (2026-10-20); rolling architecture and operations documentation",
+      "status_notes": "Production-oriented Kubernetes inference-serving stack whose Router and Endpoint Picker (EPP) use live model-server and cache state to select endpoints. v1.0.0 aligns core components; current architecture documents real-time metric ingestion, KV-cache-aware routing, flow control, prefill/decode disaggregation, and an online latency predictor for TTFT and TPOT.",
+      "evidence": ["real-time endpoint and model-server state", "queue depth and running requests", "KV-cache utilisation and prefix-cache affinity", "predicted and observed TTFT", "predicted and observed TPOT", "request, error, latency and scheduler metrics", "KV-cache index and event metrics", "Prometheus metrics and Grafana dashboards", "OpenTelemetry distributed tracing", "SLO violation and admission signals"],
+      "relevance": "Concrete implementation evidence that observability can become an input to inference placement rather than only a troubleshooting output: the EPP scores candidate endpoints using live load, cache and latency signals, and can feed observed latency back into an online predictor.",
+      "limitations": "The documented control loop operates within an llm-d/Kubernetes inference environment and does not define cross-provider or cross-organisational correlation, disclosure policy, network-path evidence, or portable KV/state semantics. Predictor assumptions include homogeneous inference pools; metric and tracing exposure remains deployment-specific.",
+      "last_checked": "2026-11-24",
+      "primary_sources": [
+        {"title": "llm-d v1.0.0 release", "url": "https://github.com/llm-d/llm-d/releases/tag/v1.0.0"},
+        {"title": "llm-d architecture", "url": "https://llm-d.ai/docs/dev/architecture"},
+        {"title": "llm-d latency predictor", "url": "https://llm-d.ai/docs/dev/architecture/router/latency-predictor"},
+        {"title": "llm-d Router metrics", "url": "https://llm-d.ai/docs/operations/observability/router-metrics"},
+        {"title": "llm-d monitoring stack", "url": "https://github.com/llm-d/llm-d/blob/main/docs/operations/observability/setup.md"}
+      ]
+    },
+    {
       "id": "fox",
       "name": "Federated Observability Exchange (FOX)",
       "domain": "project-concept",

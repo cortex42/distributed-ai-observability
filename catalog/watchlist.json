@@ -449,6 +449,34 @@
       "url": "https://datatracker.ietf.org/doc/draft-liu-audit-enforcement-points/",
       "tracks": ["agent-enforcement-points"],
       "check_for": ["revision", "working-group adoption", "enforcement-point or coverage model change", "audit schema", "implementation or conformance evidence", "privacy or security change", "expiry or replacement"]
+    },
+    {
+      "id": "llm-d-releases",
+      "organisation": "llm-d",
+      "url": "https://github.com/llm-d/llm-d/releases",
+      "tracks": ["llm-d"],
+      "check_for": ["new release", "component version alignment", "routing or serving architecture change", "observability or SLO feature", "deprecation or breaking change"]
+    },
+    {
+      "id": "llm-d-architecture",
+      "organisation": "llm-d",
+      "url": "https://llm-d.ai/docs/dev/architecture",
+      "tracks": ["llm-d"],
+      "check_for": ["Router or EPP architecture change", "new data source for endpoint selection", "KV-cache or disaggregation change", "new agent-aware or state-aware serving mechanism"]
+    },
+    {
+      "id": "llm-d-observability",
+      "organisation": "llm-d",
+      "url": "https://llm-d.ai/docs/operations/observability/router-metrics",
+      "tracks": ["llm-d"],
+      "check_for": ["metric additions or removals", "TTFT or TPOT semantics", "SLO or admission signals", "cache or scheduler metrics", "tracing or correlation change"]
+    },
+    {
+      "id": "llm-d-latency-predictor",
+      "organisation": "llm-d",
+      "url": "https://llm-d.ai/docs/dev/architecture/router/latency-predictor",
+      "tracks": ["llm-d"],
+      "check_for": ["prediction feature change", "training or feedback-loop change", "heterogeneous-pool support", "SLO scoring change", "prediction observability change"]
     }
   ]
 }
