@@ -52,6 +52,7 @@ PRIMARY_HOSTS = {
     "datatracker.ietf.org",
     "modelcontextprotocol.io",
     "www.ntop.org",
+    "llm-d.ai",
 }
 
 
